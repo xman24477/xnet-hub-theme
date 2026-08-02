@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Prefixed library colors to avoid collisions with consumer apps -->
+    <color name="xnet_auth_color_primary">#00FF41</color>
+    <color name="xnet_auth_glass_background">#20FFFFFF</color>
+    <color name="xnet_auth_card_background_dark">#242424</color>
+    <color name="xnet_auth_text_primary">#FFFFFF</color>
+    <color name="xnet_auth_text_secondary">#B3B3B3</color>
+    <color name="xnet_auth_background_dark">#121212</color>
+</resources>

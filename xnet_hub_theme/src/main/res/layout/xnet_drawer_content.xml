@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerPanel"
+    android:layout_width="300dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:fitsSystemWindows="true"
+    android:clipToOutline="true"
+    app:cardElevation="0dp"
+    app:strokeWidth="1dp">
+
+    <com.xnethub.xnet_hub_theme.XnetCutMaskLayout
+        android:id="@+id/drawerCutMaskContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Animated backdrop overlay (visible in X-Cyber themes) -->
+        <com.xnethub.xnet_hub_theme.XnetAnimatedBackdropView
+            android:id="@+id/drawerBackdrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.52" />
+
+        <!-- Glass overlay layer -->
+        <View
+            android:id="@+id/drawerGlass"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.44"
+            android:background="?attr/xnetGlassSoft" />
+
+        <!-- Drawer Content Container (No hardcoded top/bottom inset padding) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingStart="10dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="12dp">
+
+            <!-- 
+                OPTIONAL PROFILE HEADER CARD 
+                (Can be hidden via View.GONE or replaced dynamically by any app)
+            -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/drawerProfileCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:id="@+id/drawerProfileLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/drawerAvatar"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="?attr/xnetSurfaceRaised"
+                        android:gravity="center"
+                        android:text="X"
+                        android:textColor="?attr/xnetAccentPrimary"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/drawerUserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:gravity="center"
+                        android:text="XNET User"
+                        android:textColor="?attr/xnetTextPrimary"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/drawerUserEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="user@xnet.hub"
+                        android:textColor="?attr/xnetTextSecondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/drawerUserStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="● CONNECTED"
+                        android:textColor="?attr/xnetAccentPositive"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Divider below header -->
+            <View
+                android:id="@+id/drawerDivider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:background="?attr/xnetStrokeSoft" />
+
+            <!-- 
+                CUSTOMIZABLE MENU CONTAINER 
+                Apps can populate this scrollview with any menu items
+            -->
+            <ScrollView
+                android:id="@+id/drawerScroll"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fillViewport="true"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/drawerMenuContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="8dp">
+
+                    <!-- Default Demo Menu Items -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDrawerHome"
+                        style="@style/Widget.XnetCore.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="4dp"
+                        android:text="Home"
+                        android:textAllCaps="false" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDrawerSettings"
+                        style="@style/Widget.XnetCore.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Settings"
+                        android:textAllCaps="false" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDrawerAbout"
+                        style="@style/Widget.XnetCore.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="8dp"
+                        android:text="About"
+                        android:textAllCaps="false" />
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </com.xnethub.xnet_hub_theme.XnetCutMaskLayout>
+</com.google.android.material.card.MaterialCardView>

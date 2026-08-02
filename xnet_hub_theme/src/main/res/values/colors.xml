@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+    
+    <!-- Base App Colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    
+    <!-- Classic Light Colors -->
+    <color name="classic_light_background">#F5F5F5</color>
+    <color name="classic_light_surface">#FFFFFF</color>
+    <color name="classic_light_text_primary">#212121</color>
+    <color name="classic_light_text_secondary">#757575</color>
+    <color name="classic_light_accent">#000000</color>
+    
+    <!-- Classic Dark Colors -->
+    <color name="classic_dark_background">#121212</color>
+    <color name="classic_dark_surface">#1E1E1E</color>
+    <color name="classic_dark_text_primary">#FFFFFF</color>
+    <color name="classic_dark_text_secondary">#B3B3B3</color>
+    <color name="classic_dark_accent">#FFFFFF</color>
+    
+    <!-- Cyber Green Colors -->
+    <color name="cyber_green_bg">#020A02</color>
+    <color name="cyber_green_bg_alt">#040E04</color>
+    <color name="cyber_green_surface">#5C071407</color>
+    <color name="cyber_green_stroke">#2D8C44</color>
+    <color name="cyber_green_text_primary">#E8FFE8</color>
+    <color name="cyber_green_text_secondary">#8FE09A</color>
+    <color name="cyber_green_accent">#00FF41</color>
+    
+    <!-- Cyber Blue Colors -->
+    <color name="cyber_blue_bg">#020810</color>
+    <color name="cyber_blue_bg_alt">#06111D</color>
+    <color name="cyber_blue_surface">#5C0A1628</color>
+    <color name="cyber_blue_stroke">#3A8AC6</color>
+    <color name="cyber_blue_text_primary">#E8F4F8</color>
+    <color name="cyber_blue_text_secondary">#8AB4C8</color>
+    <color name="cyber_blue_accent">#00D4FF</color>
+    
+    <!-- Cyber Black Colors -->
+    <color name="cyber_black_bg">#070707</color>
+    <color name="cyber_black_bg_alt">#101010</color>
+    <color name="cyber_black_surface">#5C141414</color>
+    <color name="cyber_black_stroke">#505050</color>
+    <color name="cyber_black_text_primary">#F5F5F5</color>
+    <color name="cyber_black_text_secondary">#D4D4D4</color>
+    <color name="cyber_black_accent">#F2F2F2</color>
+    
+    <!-- Cyber Orange Colors -->
+    <color name="cyber_orange_bg">#0D0600</color>
+    <color name="cyber_orange_bg_alt">#1A0C00</color>
+    <color name="cyber_orange_surface">#5C261200</color>
+    <color name="cyber_orange_stroke">#BF6B30</color>
+    <color name="cyber_orange_text_primary">#FFF1E6</color>
+    <color name="cyber_orange_text_secondary">#CCB3A3</color>
+    <color name="cyber_orange_accent">#FF7700</color>
+</resources>

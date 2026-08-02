@@ -1,0 +1,258 @@
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:theme="@style/Theme.XnetCore.CyberGreen"
+    android:background="@android:color/transparent">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <!-- Top status bar inset spacer container for dedicated animated backdrop -->
+    <FrameLayout
+        android:id="@+id/topInsetSpacer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+         />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topInsetSpacer"
+        android:layout_above="@id/bottomInsetSpacer"
+        android:background="@android:color/transparent"
+        android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center">
+
+    <!-- Toolbar row with hamburger drawer button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginBottom="3dp">
+
+        <ImageButton
+            android:id="@+id/btnOpenDrawer"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Open drawer"
+            android:padding="8dp"
+            android:src="@drawable/ic_nav_menu"
+            app:tint="?attr/xnetTextPrimary" />
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="Xnet UI Library Test"
+            android:textColor="?attr/xnetTextPrimary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select a theme below to see changes."
+        android:textColor="?attr/xnetTextSecondary"
+        android:layout_marginBottom="32dp"/>
+
+    <com.xnethub.xnet_hub_theme.XnetButton
+        android:id="@+id/btnThemeGreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="X-Cyber Green"
+        style="?attr/materialButtonStyle"
+        android:layout_marginBottom="8dp"/>
+
+    <com.xnethub.xnet_hub_theme.XnetButton
+        android:id="@+id/btnThemeBlue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="X-Cyber Blue"
+        style="?attr/materialButtonStyle"
+        android:layout_marginBottom="8dp"/>
+
+    <com.xnethub.xnet_hub_theme.XnetButton
+        android:id="@+id/btnThemeBlack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="X-Cyber Black"
+        style="?attr/materialButtonStyle"
+        android:layout_marginBottom="8dp"/>
+        
+    <com.xnethub.xnet_hub_theme.XnetButton
+        android:id="@+id/btnThemeOrange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="X-Cyber Orange"
+        style="?attr/materialButtonStyle"
+        android:layout_marginBottom="8dp"/>
+
+    <com.xnethub.xnet_hub_theme.XnetButton
+        android:id="@+id/btnThemeRGB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="X-Cyber RGB"
+        style="?attr/materialButtonStyle"
+        android:layout_marginBottom="8dp"/>
+        
+    <com.xnethub.xnet_hub_theme.XnetButton
+        android:id="@+id/btnThemeClassic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Light (Normal)"
+        style="?attr/materialButtonStyle"
+        android:layout_marginBottom="8dp"/>
+        
+    <com.xnethub.xnet_hub_theme.XnetButton
+        android:id="@+id/btnThemeClassicDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dark (Normal)"
+        style="?attr/materialButtonStyle"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Custom Font:"
+        android:textColor="?attr/xnetTextPrimary"
+        android:layout_marginBottom="8dp"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinnerFonts"
+        style="@style/Widget.XnetCore.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginBottom="24dp" />
+        
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Social Login Example:"
+        android:textColor="?attr/xnetTextSecondary"
+        android:layout_marginBottom="8dp"/>
+        
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGoogleSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign in with Google"
+        app:icon="@drawable/ic_google"
+        app:iconGravity="textStart"
+        app:iconTint="@null"
+        style="?attr/materialButtonStyle"
+        app:backgroundTint="?attr/xnetSurfaceAlt"
+        android:textColor="?attr/xnetTextPrimary"
+        app:strokeColor="?attr/xnetStroke"
+        app:strokeWidth="1dp"
+        android:layout_marginBottom="32dp"/>
+        
+    <!-- AUDIO PLAYER TEST UI -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Audio Player UI Test:"
+        android:textColor="?attr/xnetTextSecondary"
+        android:layout_marginBottom="16dp"/>
+        
+    <!-- Full DriveX-style turntable disc with all 5 layers -->
+    <com.xnethub.xnet_hub_theme.XnetAudioDiscView
+        android:id="@+id/audioDiscTurntable"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Audio control buttons with ripple click effects -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_xnet_audio_control_button_ripple"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@android:drawable/ic_media_previous"
+            app:tint="?attr/xnetTextPrimary" />
+
+        <ImageButton
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_xnet_audio_control_button_ripple"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@android:drawable/ic_media_rew"
+            app:tint="?attr/xnetTextPrimary" />
+
+        <ImageButton
+            android:id="@+id/btnAudioPlayPause"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_xnet_audio_play_hex_ripple"
+            android:padding="16dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@android:drawable/ic_media_play" />
+
+        <ImageButton
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_xnet_audio_control_button_ripple"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@android:drawable/ic_media_ff"
+            app:tint="?attr/xnetTextPrimary" />
+
+        <ImageButton
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_xnet_audio_control_button_ripple"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@android:drawable/ic_media_next"
+            app:tint="?attr/xnetTextPrimary" />
+    </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
+    <!-- Bottom navigation bar inset spacer container for dedicated animated backdrop -->
+    <FrameLayout
+        android:id="@+id/bottomInsetSpacer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>
+
+    <!-- ════════════════════════════════════════════════ -->
+    <!-- XNET DRAWER PANEL (library-styled layout)       -->
+    <!-- ════════════════════════════════════════════════ -->
+    <include
+        android:id="@+id/drawerPanel"
+        layout="@layout/xnet_drawer_content" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

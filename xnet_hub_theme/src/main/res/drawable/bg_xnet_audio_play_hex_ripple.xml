@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ripple wrapper for bg_xnet_audio_play_hex (hexagonal play button) -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?attr/xnetAccentPrimarySoft">
+    <item android:id="@android:id/mask">
+        <shape android:shape="oval">
+            <solid android:color="@android:color/white"/>
+        </shape>
+    </item>
+    <item android:drawable="@drawable/bg_xnet_audio_play_hex"/>
+</ripple>
