@@ -80,32 +80,41 @@ public class XnetTextFormatter {
             // 2. 'NET' -> Primary Theme Text Color (or Cyber Cyan #00D4FF in CyberRGB)
             builder.setSpan(new ForegroundColorSpan(primaryText), index + 1, index + 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-            // Check if followed by " hub" / " HUB"
-            int hubStart = index + 4;
+            // Check if followed by " hub" or " smart"
+            int secondWordStart = index + 4;
             int spanEnd = index + 4;
-            if (hubStart < lower.length() && lower.charAt(hubStart) == ' ') {
-                hubStart++;
+            if (secondWordStart < lower.length() && lower.charAt(secondWordStart) == ' ') {
+                secondWordStart++;
             }
-            if (hubStart + 3 <= lower.length() && lower.substring(hubStart, hubStart + 3).equalsIgnoreCase("hub")) {
-                spanEnd = hubStart + 3;
+            String secondWord = null;
+            if (secondWordStart + 3 <= lower.length() && lower.substring(secondWordStart, secondWordStart + 3).equalsIgnoreCase("hub")) {
+                secondWord = "hub";
+                spanEnd = secondWordStart + 3;
+            } else if (secondWordStart + 5 <= lower.length() && lower.substring(secondWordStart, secondWordStart + 5).equalsIgnoreCase("smart")) {
+                secondWord = "smart";
+                spanEnd = secondWordStart + 5;
+            }
+            
+            if (secondWord != null) {
                 if (isColoredCyber) {
-                    // CyberGreen, CyberBlue, CyberOrange, CyberRGB: Entire "HUB" gets vibrant accent color
-                    builder.setSpan(new ForegroundColorSpan(accentColor), hubStart, hubStart + 3, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    builder.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), hubStart, hubStart + 3, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    // CyberGreen, CyberBlue, CyberOrange, CyberRGB: Entire second word gets vibrant accent color
+                    builder.setSpan(new ForegroundColorSpan(accentColor), secondWordStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    builder.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), secondWordStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 } else {
-                    // Normal Light, Normal Dark & CyberBlack: 'H' gets Signature Green, 'UB' gets theme text color
-                    builder.replace(hubStart, hubStart + 1, "H");
-                    builder.setSpan(new ForegroundColorSpan(greenColor), hubStart, hubStart + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    builder.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), hubStart, hubStart + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    builder.setSpan(new ForegroundColorSpan(primaryText), hubStart + 1, hubStart + 3, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    // Normal Light, Normal Dark & CyberBlack: First letter gets Signature Green, rest gets theme text color
+                    String firstLetter = builder.subSequence(secondWordStart, secondWordStart + 1).toString().toUpperCase();
+                    builder.replace(secondWordStart, secondWordStart + 1, firstLetter);
+                    builder.setSpan(new ForegroundColorSpan(greenColor), secondWordStart, secondWordStart + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    builder.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), secondWordStart, secondWordStart + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    builder.setSpan(new ForegroundColorSpan(primaryText), secondWordStart + 1, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
             }
 
             // Apply marker span so XnetBrandTextView can locate it for glitch/glitter effects
-            boolean hasHub = (spanEnd > index + 4);
-            if (hasHub) {
-                // Only the second word ("Hub") glitches, matching xnethub.xyz design
-                builder.setSpan(new XnetBrandMarkerSpan(), hubStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            boolean hasSecondWord = (spanEnd > index + 4);
+            if (hasSecondWord) {
+                // Only the second word ("Hub" or "Smart") glitches, matching xnethub.xyz design
+                builder.setSpan(new XnetBrandMarkerSpan(), secondWordStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             } else {
                 // No second word: "Xnet" itself glitches
                 builder.setSpan(new XnetBrandMarkerSpan(), spanStart, index + 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
