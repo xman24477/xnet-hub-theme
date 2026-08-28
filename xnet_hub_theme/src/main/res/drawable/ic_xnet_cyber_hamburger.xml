@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Top Bar — Shorter width (Hexagon Top Silhouette) -->
+    <path
+        android:fillColor="?attr/xnetTextPrimary"
+        android:pathData="M7,5h10L18,6v1.5L17,8.5H7L6,7.5V6Z" />
+
+    <!-- Middle Bar — Full width (Hexagon Center Silhouette) -->
+    <path
+        android:fillColor="?attr/xnetTextPrimary"
+        android:pathData="M4,11h16L21,12v1.5L20,14.5H4L3,13.5V12Z" />
+
+    <!-- Bottom Bar — Shorter width (Hexagon Bottom Silhouette) -->
+    <path
+        android:fillColor="?attr/xnetTextPrimary"
+        android:pathData="M7,17h10L18,18v1.5L17,20.5H7L6,19.5V18Z" />
+</vector>

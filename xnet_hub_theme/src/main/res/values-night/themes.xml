@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.XnetCore.DayNight" parent="Theme.XnetCore.Dark" />
+    <style name="Theme.XnetCore.Classic.DayNight" parent="Theme.XnetCore.DayNight" />
+</resources>

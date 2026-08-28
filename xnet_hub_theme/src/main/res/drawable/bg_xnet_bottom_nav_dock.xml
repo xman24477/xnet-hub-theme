@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="64dp"
+    android:viewportWidth="360"
+    android:viewportHeight="64">
+
+    <!-- Outer Cyber Cut-Corner Dock Shell (Top-Left & Top-Right 16dp Cut) -->
+    <path
+        android:fillColor="?attr/xnetSurfaceAlt"
+        android:pathData="M20,1 H340 L359,20 V63 H1 V20 Z"
+        android:strokeColor="?attr/xnetStroke"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1.5" />
+
+    <!-- Inner Parallel Cyber Accent Line (Matching Cut-Corner Dock Profile) -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M24,6 H336 L353,23 V59 H7 V23 Z"
+        android:strokeColor="?attr/xnetStroke"
+        android:strokeAlpha="0.4"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1" />
+</vector>

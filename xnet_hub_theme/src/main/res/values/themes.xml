@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- ========================================= -->
+    <!-- BASE THEME FOR ALL XNET APPS              -->
+    <!-- ========================================= -->
+    <style name="Theme.XnetCore.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">?attr/xnetBackground</item>
+        <item name="android:navigationBarColor">?attr/xnetBackground</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+        
+        <item name="xnetEnableAnimatedBackdrop">false</item>
+        <item name="xnetIsCyberTheme">false</item>
+
+        <!-- Base Backgrounds -->
+        <item name="xnetBackground">#121212</item>
+        <item name="xnetBackgroundAlt">#000000</item>
+        <item name="xnetBackgroundDeep">#080808</item>
+
+        <!-- Surfaces -->
+        <item name="xnetSurfaceBase">#1E1E1E</item>
+        <item name="xnetSurfaceAlt">#242424</item>
+        <item name="xnetSurfaceRaised">#2C2C2C</item>
+        <item name="xnetSurfaceFloat">#333333</item>
+
+        <!-- Strokes -->
+        <item name="xnetStroke">#444444</item>
+        <item name="xnetStrokeSoft">#25FFFFFF</item>
+
+        <!-- Text Colors -->
+        <item name="xnetTextPrimary">#FFFFFF</item>
+        <item name="xnetTextSecondary">#B3B3B3</item>
+        <item name="xnetTextMuted">#808080</item>
+        <item name="xnetTextHint">#666666</item>
+
+        <!-- Accent Colors -->
+        <item name="xnetAccentPrimary">#00FF41</item>
+        <item name="xnetAccentPrimarySoft">#4000FF41</item>
+        <item name="xnetAccentHighlight">#00D4FF</item>
+        <item name="xnetAccentHighlightSoft">#4000D4FF</item>
+        <item name="xnetAccentPositive">#00FF85</item>
+
+        <!-- Glass & Overlay defaults -->
+        <item name="xnetGlass">#20FFFFFF</item>
+        <item name="xnetGlassSoft">#12FFFFFF</item>
+        <item name="xnetBackdropGrid">#15FFFFFF</item>
+        <item name="xnetScrim">#A0000000</item>
+
+        <!-- Widget Styles -->
+        <item name="materialButtonStyle">@style/Widget.XnetCore.Button</item>
+        <item name="materialCardViewStyle">@style/Widget.XnetCore.Card</item>
+        <item name="popupMenuStyle">@style/Widget.XnetCore.PopupMenu</item>
+        <item name="android:popupMenuStyle">@style/Widget.XnetCore.PopupMenu</item>
+
+        <!-- Dynamic Shapes for Normal Themes (Rounded) -->
+        <item name="xnetShapeButton">@style/ShapeAppearanceOverlay.XnetCore.CutButton.Classic</item>
+        <item name="xnetShapeCard">@style/ShapeAppearanceOverlay.XnetCore.CutCard.Classic</item>
+        <item name="xnetShapeInput">@style/ShapeAppearanceOverlay.XnetCore.CutButton.Classic</item>
+        <item name="xnetShapeDrawerShell">@style/ShapeAppearanceOverlay.XnetCore.DrawerShell.Classic</item>
+        <item name="xnetShapeDrawerProfile">@style/ShapeAppearanceOverlay.XnetCore.DrawerProfile.Classic</item>
+        <item name="xnetShapeSpinnerDrawable">@drawable/bg_xnet_spinner_shell_classic</item>
+    </style>
+
+    <!-- ========================================= -->
+    <!-- 1. LIGHT THEME (Normal Standard)          -->
+    <!-- ========================================= -->
+    <style name="Theme.XnetCore.Light" parent="Theme.XnetCore.Base">
+        <!-- Colors -->
+        <item name="xnetBackground">@color/classic_light_background</item>
+        <item name="xnetBackgroundAlt">@color/white</item>
+        <item name="xnetSurfaceBase">@color/classic_light_surface</item>
+        <item name="xnetTextPrimary">@color/classic_light_text_primary</item>
+        <item name="xnetTextSecondary">@color/classic_light_text_secondary</item>
+        <item name="xnetTextMuted">#757575</item>
+        <item name="xnetTextHint">#9E9E9E</item>
+        <item name="xnetAccentPrimary">@color/classic_light_accent</item>
+        <item name="xnetAccentPositive">#2E7D32</item>
+        <item name="xnetSurfaceRaised">#E0E0E0</item>
+        <item name="xnetSurfaceAlt">#FFFFFF</item>
+        <item name="xnetStroke">#CCCCCC</item>
+        <item name="xnetStrokeSoft">#1F000000</item>
+        <item name="xnetGlass">#15000000</item>
+        <item name="xnetGlassSoft">#08000000</item>
+        <item name="xnetAccentPrimarySoft">#20000000</item>
+        
+        <!-- Standard Material Color Assignments -->
+        <item name="colorPrimary">@color/classic_light_accent</item>
+        <item name="colorPrimaryVariant">@color/classic_light_surface</item>
+        <item name="colorOnPrimary">@color/classic_light_background</item>
+        <item name="colorSecondary">@color/classic_light_accent</item>
+        <item name="colorSecondaryVariant">@color/classic_light_accent</item>
+        <item name="colorOnSecondary">@color/classic_light_background</item>
+        <item name="colorSurface">@color/classic_light_surface</item>
+        <item name="android:colorBackground">@color/classic_light_background</item>
+        <item name="colorOnSurface">@color/classic_light_text_primary</item>
+        
+        <!-- Standard Material Fonts & Shapes -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+    </style>
+
+    <!-- Legacy Alias -->
+    <style name="Theme.XnetCore.Classic.Light" parent="Theme.XnetCore.Light" />
+
+    <!-- ========================================= -->
+    <!-- 2. DARK THEME (Normal Standard)           -->
+    <!-- ========================================= -->
+    <style name="Theme.XnetCore.Dark" parent="Theme.XnetCore.Base">
+        <!-- Colors -->
+        <item name="xnetBackground">@color/classic_dark_background</item>
+        <item name="xnetBackgroundAlt">@color/black</item>
+        <item name="xnetSurfaceBase">@color/classic_dark_surface</item>
+        <item name="xnetTextPrimary">@color/classic_dark_text_primary</item>
+        <item name="xnetTextSecondary">@color/classic_dark_text_secondary</item>
+        <item name="xnetAccentPrimary">@color/classic_dark_accent</item>
+        <item name="xnetSurfaceRaised">#333333</item>
+        <item name="xnetSurfaceAlt">#1E1E1E</item>
+        <item name="xnetStroke">#444444</item>
+        <item name="xnetAccentPrimarySoft">#40FFFFFF</item>
+        
+        <!-- Standard Material Color Assignments -->
+        <item name="colorPrimary">@color/classic_dark_accent</item>
+        <item name="colorPrimaryVariant">@color/classic_dark_surface</item>
+        <item name="colorOnPrimary">@color/classic_dark_background</item>
+        <item name="colorSecondary">@color/classic_dark_accent</item>
+        <item name="colorSecondaryVariant">@color/classic_dark_accent</item>
+        <item name="colorOnSecondary">@color/classic_dark_background</item>
+        <item name="colorSurface">@color/classic_dark_surface</item>
+        <item name="android:colorBackground">@color/classic_dark_background</item>
+        <item name="colorOnSurface">@color/classic_dark_text_primary</item>
+        
+        <!-- Standard Material Fonts & Shapes -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <!-- Legacy Alias -->
+    <style name="Theme.XnetCore.Classic.Dark" parent="Theme.XnetCore.Dark" />
+
+    <!-- ========================================= -->
+    <!-- 3. SYSTEM DEFAULT (DAY/NIGHT)             -->
+    <!-- ========================================= -->
+    <style name="Theme.XnetCore.DayNight" parent="Theme.XnetCore.Light" />
+    <style name="Theme.XnetCore.Classic.DayNight" parent="Theme.XnetCore.DayNight" />
+
+    <!-- ========================================= -->
+    <!-- CYBER BASE THEME (Contains Custom Shapes) -->
+    <!-- ========================================= -->
+    <style name="Theme.XnetCore.CyberBase" parent="Theme.XnetCore.Base">
+        <!-- Link to Custom Widgets -->
+        <item name="materialButtonStyle">@style/Widget.XnetCore.Button</item>
+        <item name="materialCardViewStyle">@style/Widget.XnetCore.Card</item>
+        <item name="popupMenuStyle">@style/Widget.XnetCore.PopupMenu</item>
+        <item name="android:popupMenuStyle">@style/Widget.XnetCore.PopupMenu</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.XnetCore.AlertDialog</item>
+        <item name="android:alertDialogTheme">@style/ThemeOverlay.XnetCore.AlertDialog</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.XnetCore.MaterialAlertDialog</item>
+        
+        <!-- Dynamic Shapes for Cyber Themes (Cut Corners) -->
+        <item name="xnetShapeButton">@style/ShapeAppearanceOverlay.XnetCore.CutButton</item>
+        <item name="xnetShapeCard">@style/ShapeAppearanceOverlay.XnetCore.CutCard</item>
+        <item name="xnetShapeInput">@style/ShapeAppearanceOverlay.XnetCore.CutInput</item>
+        <item name="xnetShapeDrawerShell">@style/ShapeAppearanceOverlay.XnetCore.DrawerShell</item>
+        <item name="xnetShapeDrawerProfile">@style/ShapeAppearanceOverlay.XnetCore.DrawerProfile</item>
+        <item name="xnetShapeSpinnerDrawable">@drawable/bg_xnet_spinner_shell</item>
+
+        <!-- Custom Font -->
+        <item name="android:fontFamily">@font/rajdhani</item>
+        <item name="fontFamily">@font/rajdhani</item>
+        
+        <item name="xnetEnableAnimatedBackdrop">true</item>
+        <item name="xnetIsCyberTheme">true</item>
+    </style>
+
+    <!-- ========================================= -->
+    <!-- 4. CYBER GREEN THEME                      -->
+    <!-- ========================================= -->
+    <style name="Theme.XnetCore.CyberGreen" parent="Theme.XnetCore.CyberBase">
+        <item name="xnetBackground">@color/cyber_green_bg</item>
+        <item name="xnetBackgroundAlt">@color/cyber_green_bg_alt</item>
+        <item name="xnetSurfaceBase">@color/cyber_green_surface</item>
+        <item name="xnetStroke">@color/cyber_green_stroke</item>
+        <item name="xnetTextPrimary">@color/cyber_green_text_primary</item>
+        <item name="xnetTextSecondary">@color/cyber_green_text_secondary</item>
+        <item name="xnetAccentPrimary">@color/cyber_green_accent</item>
+        <item name="xnetAccentHighlight">#49D6FF</item>
+        <item name="xnetAccentPositive">#00FF85</item>
+        <item name="xnetSurfaceRaised">@color/cyber_green_bg_alt</item>
+        <item name="xnetSurfaceAlt">@color/cyber_green_surface</item>
+        <item name="xnetAccentPrimarySoft">#4000FF41</item>
+        
+        <!-- Standard Material Color Assignments -->
+        <item name="colorPrimary">@color/cyber_green_accent</item>
+        <item name="colorPrimaryVariant">@color/cyber_green_surface</item>
+        <item name="colorOnPrimary">@color/cyber_green_bg</item>
+        <item name="colorSecondary">#00FF85</item>
+        <item name="colorSecondaryVariant">#49D6FF</item>
+        <item name="colorOnSecondary">@color/cyber_green_bg</item>
+        <item name="colorSurface">@color/cyber_green_surface</item>
+        <item name="android:colorBackground">@color/cyber_green_bg</item>
+        <item name="colorOnSurface">@color/cyber_green_text_primary</item>
+    </style>
+
+    <style name="Theme.XnetCore.CyberGreen.System" parent="Theme.XnetCore.CyberGreen">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <!-- ========================================= -->
+    <!-- 5. CYBER BLUE THEME                       -->
+    <!-- ========================================= -->
+    <style name="Theme.XnetCore.CyberBlue" parent="Theme.XnetCore.CyberBase">
+        <item name="xnetBackground">@color/cyber_blue_bg</item>
+        <item name="xnetBackgroundAlt">@color/cyber_blue_bg_alt</item>
+        <item name="xnetSurfaceBase">@color/cyber_blue_surface</item>
+        <item name="xnetStroke">@color/cyber_blue_stroke</item>
+        <item name="xnetTextPrimary">@color/cyber_blue_text_primary</item>
+        <item name="xnetTextSecondary">@color/cyber_blue_text_secondary</item>
+        <item name="xnetAccentPrimary">@color/cyber_blue_accent</item>
+        <item name="xnetAccentHighlight">#7EC8E3</item>
+        <item name="xnetAccentPositive">#53D39B</item>
+        <item name="xnetSurfaceRaised">@color/cyber_blue_bg_alt</item>
+        <item name="xnetSurfaceAlt">@color/cyber_blue_surface</item>
+        <item name="xnetAccentPrimarySoft">#4000D4FF</item>
+        
+        <!-- Standard Material Color Assignments -->
+        <item name="colorPrimary">@color/cyber_blue_accent</item>
+        <item name="colorPrimaryVariant">@color/cyber_blue_surface</item>
+        <item name="colorOnPrimary">@color/cyber_blue_bg</item>
+        <item name="colorSecondary">#53D39B</item>
+        <item name="colorSecondaryVariant">#7EC8E3</item>
+        <item name="colorOnSecondary">@color/cyber_blue_bg</item>
+        <item name="colorSurface">@color/cyber_blue_surface</item>
+        <item name="android:colorBackground">@color/cyber_blue_bg</item>
+        <item name="colorOnSurface">@color/cyber_blue_text_primary</item>
+    </style>
+
+    <style name="Theme.XnetCore.CyberBlue.System" parent="Theme.XnetCore.CyberBlue">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <!-- ========================================= -->
+    <!-- 6. CYBER BLACK THEME                      -->
+    <!-- ========================================= -->
+    <style name="Theme.XnetCore.CyberBlack" parent="Theme.XnetCore.CyberBase">
+        <item name="xnetBackground">@color/cyber_black_bg</item>
+        <item name="xnetBackgroundAlt">@color/cyber_black_bg_alt</item>
+        <item name="xnetSurfaceBase">@color/cyber_black_surface</item>
+        <item name="xnetStroke">@color/cyber_black_stroke</item>
+        <item name="xnetTextPrimary">@color/cyber_black_text_primary</item>
+        <item name="xnetTextSecondary">@color/cyber_black_text_secondary</item>
+        <item name="xnetAccentPrimary">@color/cyber_black_accent</item>
+        <item name="xnetAccentHighlight">#7EC8E3</item>
+        <item name="xnetAccentPositive">#FFC857</item>
+        <item name="xnetSurfaceRaised">@color/cyber_black_bg_alt</item>
+        <item name="xnetSurfaceAlt">@color/cyber_black_surface</item>
+        <item name="xnetAccentPrimarySoft">#40F2F2F2</item>
+        
+        <!-- Standard Material Color Assignments -->
+        <item name="colorPrimary">@color/cyber_black_accent</item>
+        <item name="colorPrimaryVariant">@color/cyber_black_surface</item>
+        <item name="colorOnPrimary">@color/cyber_black_bg</item>
+        <item name="colorSecondary">#FFC857</item>
+        <item name="colorSecondaryVariant">#7EC8E3</item>
+        <item name="colorOnSecondary">@color/cyber_black_bg</item>
+        <item name="colorSurface">@color/cyber_black_surface</item>
+        <item name="android:colorBackground">@color/cyber_black_bg</item>
+        <item name="colorOnSurface">@color/cyber_black_text_primary</item>
+    </style>
+
+    <style name="Theme.XnetCore.CyberBlack.System" parent="Theme.XnetCore.CyberBlack">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- ========================================= -->
+    <!-- 7. CYBER ORANGE THEME                     -->
+    <!-- ========================================= -->
+    <style name="Theme.XnetCore.CyberOrange" parent="Theme.XnetCore.CyberBase">
+        <item name="xnetBackground">@color/cyber_orange_bg</item>
+        <item name="xnetBackgroundAlt">@color/cyber_orange_bg_alt</item>
+        <item name="xnetSurfaceBase">@color/cyber_orange_surface</item>
+        <item name="xnetStroke">@color/cyber_orange_stroke</item>
+        <item name="xnetTextPrimary">@color/cyber_orange_text_primary</item>
+        <item name="xnetTextSecondary">@color/cyber_orange_text_secondary</item>
+        <item name="xnetAccentPrimary">@color/cyber_orange_accent</item>
+        <item name="xnetAccentHighlight">#FFA500</item>
+        <item name="xnetAccentPositive">#00FF85</item>
+        <item name="xnetSurfaceRaised">@color/cyber_orange_bg_alt</item>
+        <item name="xnetSurfaceAlt">@color/cyber_orange_surface</item>
+        <item name="xnetAccentPrimarySoft">#40FF7700</item>
+        
+        <!-- Standard Material Color Assignments -->
+        <item name="colorPrimary">@color/cyber_orange_accent</item>
+        <item name="colorPrimaryVariant">@color/cyber_orange_surface</item>
+        <item name="colorOnPrimary">@color/cyber_orange_bg</item>
+        <item name="colorSecondary">#FFA500</item>
+        <item name="colorSecondaryVariant">#FF7700</item>
+        <item name="colorOnSecondary">@color/cyber_orange_bg</item>
+        <item name="colorSurface">@color/cyber_orange_surface</item>
+        <item name="android:colorBackground">@color/cyber_orange_bg</item>
+        <item name="colorOnSurface">@color/cyber_orange_text_primary</item>
+    </style>
+
+    <style name="Theme.XnetCore.CyberOrange.System" parent="Theme.XnetCore.CyberOrange">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <!-- ========================================= -->
+    <!-- 8. X-CYBER RGB THEME                      -->
+    <!-- ========================================= -->
+    <style name="Theme.XnetCore.CyberRGB" parent="Theme.XnetCore.CyberBase">
+        <item name="xnetBackground">#05080C</item>
+        <item name="xnetBackgroundAlt">#0D131A</item>
+        <item name="xnetSurfaceBase">#0A0F14</item>
+        <item name="xnetStroke">#00D4FF</item>
+        <item name="xnetTextPrimary">#F0F8FF</item>
+        <item name="xnetTextSecondary">#A0C0D0</item>
+        <item name="xnetAccentPrimary">#00D4FF</item>
+        <item name="xnetAccentSecondary">#FF6B00</item>
+        <item name="xnetAccentPositive">#00FF41</item>
+        <item name="xnetSurfaceRaised">#121A24</item>
+        <item name="xnetSurfaceAlt">#0E1620</item>
+        <item name="xnetAccentPrimarySoft">#4000D4FF</item>
+        
+        <!-- Standard Material Color Assignments -->
+        <item name="colorPrimary">#00D4FF</item>
+        <item name="colorPrimaryVariant">#0A0F14</item>
+        <item name="colorOnPrimary">#05080C</item>
+        <item name="colorSecondary">#FF6B00</item>
+        <item name="colorSecondaryVariant">#00FF41</item>
+        <item name="colorOnSecondary">#05080C</item>
+        <item name="colorSurface">#0E1620</item>
+        <item name="android:colorBackground">#05080C</item>
+        <item name="colorOnSurface">#F0F8FF</item>
+    </style>
+
+    <style name="Theme.XnetCore.CyberRGB.System" parent="Theme.XnetCore.CyberRGB">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- ========================================= -->
+    <!-- DYNAMIC FONT OVERLAYS                     -->
+    <!-- ========================================= -->
+    <style name="Theme.XnetCore.Font" parent="" />
+    
+    <style name="Theme.XnetCore.Font.Rajdhani">
+        <item name="android:fontFamily">@font/rajdhani</item>
+        <item name="fontFamily">@font/rajdhani</item>
+    </style>
+    
+    <style name="Theme.XnetCore.Font.Orbitron">
+        <item name="android:fontFamily">@font/orbitron</item>
+        <item name="fontFamily">@font/orbitron</item>
+    </style>
+    
+    <style name="Theme.XnetCore.Font.ShareTechMono">
+        <item name="android:fontFamily">@font/share_tech_mono</item>
+        <item name="fontFamily">@font/share_tech_mono</item>
+    </style>
+</resources>

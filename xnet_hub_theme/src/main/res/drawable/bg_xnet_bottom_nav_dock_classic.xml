@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="64dp"
+    android:viewportWidth="360"
+    android:viewportHeight="64">
+
+    <!-- Standard rounded top shell for bottom navigation dock in Classic themes -->
+    <path
+        android:fillColor="?attr/xnetSurfaceAlt"
+        android:pathData="M12,1 H348 C354.627,1 359,5.373 359,12 V63 H1 V12 C1,5.373 5.373,1 12,1 Z"
+        android:strokeColor="?attr/xnetStroke"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1.5" />
+</vector>

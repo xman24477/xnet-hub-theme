@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Top Hexagon Dot (6-sided pointy hexagon) -->
+    <path
+        android:fillColor="?attr/xnetTextPrimary"
+        android:pathData="M12,2.5 L14.5,3.9 L14.5,6.6 L12,8 L9.5,6.6 L9.5,3.9 Z" />
+
+    <!-- Middle Hexagon Dot (6-sided pointy hexagon) -->
+    <path
+        android:fillColor="?attr/xnetTextPrimary"
+        android:pathData="M12,9.5 L14.5,10.9 L14.5,13.6 L12,15 L9.5,13.6 L9.5,10.9 Z" />
+
+    <!-- Bottom Hexagon Dot (6-sided pointy hexagon) -->
+    <path
+        android:fillColor="?attr/xnetTextPrimary"
+        android:pathData="M12,16.5 L14.5,17.9 L14.5,20.6 L12,22 L9.5,20.6 L9.5,17.9 Z" />
+</vector>

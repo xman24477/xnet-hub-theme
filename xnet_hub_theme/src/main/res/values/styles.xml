@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ========================================= -->
+    <!-- WIDGETS                                   -->
+    <!-- ========================================= -->
+    <style name="Widget.XnetCore.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">?attr/xnetTextPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="backgroundTint">?attr/xnetSurfaceRaised</item>
+        <item name="strokeColor">?attr/xnetStroke</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="shapeAppearanceOverlay">?attr/xnetShapeButton</item>
+        <item name="rippleColor">?attr/xnetAccentPrimarySoft</item>
+    </style>
+
+    <style name="Widget.XnetCore.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">?attr/xnetSurfaceAlt</item>
+        <item name="strokeColor">?attr/xnetStroke</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="shapeAppearanceOverlay">?attr/xnetShapeCard</item>
+    </style>
+
+    <style name="Widget.XnetCore.PopupMenu" parent="Widget.MaterialComponents.PopupMenu">
+        <!-- We use colorSurface and shapeAppearanceOverlay for Material Popups -->
+        <item name="android:colorBackground">?attr/xnetSurfaceRaised</item>
+        <item name="colorSurface">?attr/xnetSurfaceRaised</item>
+        <item name="shapeAppearanceOverlay">?attr/xnetShapeCard</item>
+    </style>
+
+    <style name="Widget.XnetCore.Spinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">?attr/xnetShapeSpinnerDrawable</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+    </style>
+
+    <style name="Widget.XnetCore.DialogButton" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textColor">?attr/xnetAccentPositive</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- ========================================= -->
+    <!-- THEME OVERLAYS (Dialogs, Popups)          -->
+    <!-- ========================================= -->
+    <style name="ThemeOverlay.XnetCore.AlertDialog" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/bg_xnet_dialog_window</item>
+        <item name="android:background">@drawable/bg_xnet_dialog_window</item>
+        <item name="android:colorBackground">?attr/xnetBackgroundAlt</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:textColorPrimary">?attr/xnetTextPrimary</item>
+        <item name="android:textColorSecondary">?attr/xnetTextSecondary</item>
+        <item name="buttonBarButtonStyle">@style/Widget.XnetCore.DialogButton</item>
+        <item name="android:buttonBarButtonStyle">@style/Widget.XnetCore.DialogButton</item>
+    </style>
+
+    <style name="ThemeOverlay.XnetCore.MaterialAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="backgroundTint">?attr/xnetBackgroundAlt</item>
+        <item name="colorSurface">?attr/xnetBackgroundAlt</item>
+        <item name="android:colorBackground">?attr/xnetBackgroundAlt</item>
+        <item name="android:textColorPrimary">?attr/xnetTextPrimary</item>
+        <item name="android:textColorSecondary">?attr/xnetTextSecondary</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.XnetCore.Dialog</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.XnetCore.DialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.XnetCore.DialogButton</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.XnetCore.DialogButton</item>
+    </style>
+
+    <!-- ========================================= -->
+    <!-- SHAPE APPEARANCE OVERLAYS                 -->
+    <!-- ========================================= -->
+    <style name="ShapeAppearanceOverlay.XnetCore.Dialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+        <item name="cornerFamilyTopRight">cut</item>
+        <item name="cornerSizeTopRight">18dp</item>
+        <item name="cornerFamilyBottomLeft">cut</item>
+        <item name="cornerSizeBottomLeft">18dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.XnetCore.CutButton" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+        <item name="cornerFamilyTopRight">cut</item>
+        <item name="cornerSizeTopRight">8dp</item>
+        <item name="cornerFamilyBottomLeft">cut</item>
+        <item name="cornerSizeBottomLeft">8dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.XnetCore.CutButton.Classic" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.XnetCore.CutCard" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+        <item name="cornerFamilyTopRight">cut</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerFamilyBottomLeft">cut</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.XnetCore.CutInput" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+        <item name="cornerFamilyTopRight">cut</item>
+        <item name="cornerSizeTopRight">12dp</item>
+        <item name="cornerFamilyBottomLeft">cut</item>
+        <item name="cornerSizeBottomLeft">12dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.XnetCore.CutCard.Classic" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
+    </style>
+
+    <!-- ========================================= -->
+    <!-- DRAWER SHAPE OVERLAYS                      -->
+    <!-- ========================================= -->
+
+    <!--
+        DrawerShell — outer shell of the drawer panel.
+        X-Cyber: right side has cut corners (top-right + bottom-right).
+        Classic: all rounded (no custom shape).
+    -->
+    <style name="ShapeAppearanceOverlay.XnetCore.DrawerShell" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+        <item name="cornerFamilyTopRight">cut</item>
+        <item name="cornerSizeTopRight">22dp</item>
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="cornerSizeBottomRight">22dp</item>
+    </style>
+
+    <!-- Classic/Normal themes: no cut corners on drawer -->
+    <style name="ShapeAppearanceOverlay.XnetCore.DrawerShell.Classic" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+    </style>
+
+    <!--
+        DrawerProfile — the user-profile card inside the drawer.
+        X-Cyber: top-right and bottom-left are cut (diagonal accent).
+        Classic: all rounded.
+    -->
+    <style name="ShapeAppearanceOverlay.XnetCore.DrawerProfile" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+        <item name="cornerFamilyTopRight">cut</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerFamilyBottomLeft">cut</item>
+        <item name="cornerSizeBottomLeft">16dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.XnetCore.DrawerProfile.Classic" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+</resources>
+

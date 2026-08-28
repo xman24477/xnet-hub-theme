@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Colors -->
+    <attr name="xnetBackground" format="color" />
+    <attr name="xnetBackgroundAlt" format="color" />
+    <attr name="xnetBackgroundDeep" format="color" />
+    
+    <!-- Surface Colors -->
+    <attr name="xnetSurfaceBase" format="color" />
+    <attr name="xnetSurfaceAlt" format="color" />
+    <attr name="xnetSurfaceRaised" format="color" />
+    <attr name="xnetSurfaceFloat" format="color" />
+    
+    <!-- Stroke Colors -->
+    <attr name="xnetStroke" format="color" />
+    <attr name="xnetStrokeSoft" format="color" />
+    
+    <!-- Text Colors (Dynamic Contrast) -->
+    <attr name="xnetTextPrimary" format="color" />
+    <attr name="xnetTextSecondary" format="color" />
+    <attr name="xnetTextMuted" format="color" />
+    <attr name="xnetTextHint" format="color" />
+    
+    <!-- Accent Colors -->
+    <attr name="xnetAccentPrimary" format="color" />
+    <attr name="xnetAccentSecondary" format="color" />
+    <attr name="xnetAccentPrimarySoft" format="color" />
+    <attr name="xnetAccentHighlight" format="color" />
+    <attr name="xnetAccentHighlightSoft" format="color" />
+    <attr name="xnetAccentPositive" format="color" />
+    
+    <!-- Overlays -->
+    <attr name="xnetBackdropGrid" format="color" />
+    <attr name="xnetScrim" format="color" />
+    <attr name="xnetGlass" format="color" />
+    <attr name="xnetGlassSoft" format="color" />
+    
+    <!-- Behaviors -->
+    <attr name="xnetEnableAnimatedBackdrop" format="boolean" />
+    <!-- Set to true in X-Cyber theme variants, false in Classic themes -->
+    <attr name="xnetIsCyberTheme" format="boolean" />
+
+    <!-- Shape Attributes (Dynamic Theme-Driven Shapes) -->
+    <attr name="xnetShapeButton" format="reference" />
+    <attr name="xnetShapeCard" format="reference" />
+    <attr name="xnetShapeInput" format="reference" />
+    <attr name="xnetShapeDrawerShell" format="reference" />
+    <attr name="xnetShapeDrawerProfile" format="reference" />
+    <attr name="xnetShapeSpinnerDrawable" format="reference" />
+</resources>

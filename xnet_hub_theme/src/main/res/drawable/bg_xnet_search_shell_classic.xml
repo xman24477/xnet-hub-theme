@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="56dp"
+    android:viewportWidth="320"
+    android:viewportHeight="56">
+
+    <!-- Standard rounded background shell for search bar in Classic themes -->
+    <path
+        android:fillColor="?attr/xnetSurfaceAlt"
+        android:pathData="M8,1H312C315.866,1 319,4.134 319,8V48C319,51.866 315.866,55 312,55H8C4.134,55 1,51.866 1,48V8C1,4.134 4.134,1 8,1Z"
+        android:strokeColor="?attr/xnetStroke"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1.5" />
+</vector>
