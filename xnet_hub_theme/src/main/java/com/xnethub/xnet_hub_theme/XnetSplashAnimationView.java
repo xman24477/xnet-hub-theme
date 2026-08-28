@@ -96,7 +96,7 @@ public class XnetSplashAnimationView extends LinearLayout {
             tvLetter.setText(String.valueOf(appName.charAt(i)));
             tvLetter.setTextSize(32f);
             tvLetter.setTypeface(null, Typeface.BOLD);
-            tvLetter.setTextColor(XnetThemeManager.resolveThemeColor(getContext(), R.attr.xnetTextPrimary, 0xFFFFFFFF));
+            android.util.TypedValue typedValue = new android.util.TypedValue(); getContext().getTheme().resolveAttribute(R.attr.xnetTextPrimary, typedValue, true); tvLetter.setTextColor(typedValue.data);
             
             // Start off-screen
             tvLetter.setTranslationY(-screenHeight);
