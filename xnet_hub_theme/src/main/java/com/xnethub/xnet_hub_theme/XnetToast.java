@@ -167,8 +167,6 @@ public class XnetToast {
     private static int dp(Context ctx, float dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, ctx.getResources().getDisplayMetrics());
     }
-}
-
     private static class CyberToastBackgroundDrawable extends android.graphics.drawable.Drawable {
         private final android.graphics.Paint paint;
         private final android.graphics.Path path;
@@ -264,3 +262,4 @@ public class XnetToast {
         public int getOpacity() { return android.graphics.PixelFormat.TRANSLUCENT; }
     }
 }
+
