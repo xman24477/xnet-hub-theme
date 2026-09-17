@@ -118,7 +118,6 @@ public class XnetCalloutCard extends LinearLayout {
         int accentColor;
         String prefix;
 
-        TypedValue tv = new TypedValue();
         switch (type) {
             case WARNING:
                 if (getContext().getTheme().resolveAttribute(R.attr.xnetSemanticWarning, tv, true)) accentColor = tv.data;
@@ -162,3 +161,4 @@ public class XnetCalloutCard extends LinearLayout {
             TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
     }
 }
+

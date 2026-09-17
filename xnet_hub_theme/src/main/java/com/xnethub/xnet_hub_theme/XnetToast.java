@@ -51,7 +51,6 @@ public class XnetToast {
         int accentColor = Color.GREEN;
         String prefix = "> NOTE";
 
-        TypedValue tv = new TypedValue();
         if (type == XnetCalloutCard.CalloutType.WARNING) {
             if (context.getTheme().resolveAttribute(R.attr.xnetSemanticWarning, tv, true)) accentColor = tv.data;
             prefix = "> WARNING";
@@ -261,4 +260,5 @@ public class XnetToast {
         public int getOpacity() { return android.graphics.PixelFormat.TRANSLUCENT; }
     }
 }
+
 
