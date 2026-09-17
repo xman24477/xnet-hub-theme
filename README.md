@@ -11,7 +11,7 @@ https://github.com/xman24477/xnet-hub-theme
 JitPack dependency page:
 
 ```text
-https://jitpack.io/#xman24477/xnet-hub-theme/1.1.18
+https://jitpack.io/#xman24477/xnet-hub-theme/1.1.21
 ```
 
 ## ইনস্টলেশন
@@ -33,7 +33,7 @@ dependencyResolutionManagement {
 
 ```gradle
 dependencies {
-    implementation 'com.github.xman24477:xnet-hub-theme:1.1.18'
+    implementation 'com.github.xman24477:xnet-hub-theme:1.1.21'
 }
 ```
 
@@ -273,8 +273,8 @@ Normal `MaterialCardView`-এ style ব্যবহার:
 
 `XnetAnimatedBackdropView` cyber animated background draw করে। Classic light/dark theme-এ এটি একটি static background ব্যবহার করে, কিন্তু X-Cyber theme-এ animation শো করে।
 
-### Animation Toggle (Version 1.1.7 Update)
-ভার্সন `1.1.7` থেকে আপনি চাইলে X-Cyber থিমের হেভি ব্যাকগ্রাউন্ড অ্যানিমেশন (আর্ক, স্টার) কোডের মাধ্যমে চালু বা বন্ধ করতে পারবেন। এটি পারফরম্যান্স এবং ব্যাটারি সেভ করতে সাহায্য করে।
+### Animation Toggle (Version 1.1.21 Update)
+ভার্সন `1.1.21` থেকে আপনি চাইলে X-Cyber থিমের হেভি ব্যাকগ্রাউন্ড অ্যানিমেশন (আর্ক, স্টার) কোডের মাধ্যমে চালু বা বন্ধ করতে পারবেন। এটি পারফরম্যান্স এবং ব্যাটারি সেভ করতে সাহায্য করে।
 
 অ্যানিমেশন অন/অফ করতে নিচের মেথড ব্যবহার করুন:
 ```java
@@ -1625,3 +1625,4 @@ public class MainActivity extends XnetBaseActivity {
 - নিজের XML layout-এ `?attr/xnet...` color ব্যবহার করলে selected theme অনুযায়ী UI auto-update হবে।
 - Theme বা font change করার পর current activity-তে `recreate()` call করতে হবে।
 - নতুন app-এর জন্য `XnetBaseActivity` ব্যবহার করাই recommended।
+
