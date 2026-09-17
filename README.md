@@ -11,7 +11,7 @@ https://github.com/xman24477/xnet-hub-theme
 JitPack dependency page:
 
 ```text
-https://jitpack.io/#xman24477/xnet-hub-theme/1.1.6
+https://jitpack.io/#xman24477/xnet-hub-theme/1.1.7
 ```
 
 ## ইনস্টলেশন
@@ -33,7 +33,7 @@ dependencyResolutionManagement {
 
 ```gradle
 dependencies {
-    implementation 'com.github.xman24477:xnet-hub-theme:1.1.6'
+    implementation 'com.github.xman24477:xnet-hub-theme:1.1.7'
 }
 ```
 
@@ -271,7 +271,22 @@ Normal `MaterialCardView`-এ style ব্যবহার:
 
 ## Background Animation
 
-`XnetAnimatedBackdropView` cyber animated background draw করে। Classic light/dark theme-এ এটি static background হিসেবে থাকবে, আর X-Cyber theme-এ animation চালু হবে।
+`XnetAnimatedBackdropView` cyber animated background draw করে। Classic light/dark theme-এ এটি একটি static background ব্যবহার করে, কিন্তু X-Cyber theme-এ animation শো করে।
+
+### Animation Toggle (Version 1.1.7 Update)
+ভার্সন `1.1.7` থেকে আপনি চাইলে X-Cyber থিমের হেভি ব্যাকগ্রাউন্ড অ্যানিমেশন (আর্ক, স্টার) কোডের মাধ্যমে চালু বা বন্ধ করতে পারবেন। এটি পারফরম্যান্স এবং ব্যাটারি সেভ করতে সাহায্য করে।
+
+অ্যানিমেশন অন/অফ করতে নিচের মেথড ব্যবহার করুন:
+```java
+// অ্যানিমেশন বন্ধ করতে (শুধু হেক্সাগন গ্রিড রেন্ডার হবে)
+XnetThemeManager.setAnimationEnabled(context, false);
+
+// অ্যানিমেশন পুনরায় চালু করতে
+XnetThemeManager.setAnimationEnabled(context, true);
+
+// বর্তমান অ্যানিমেশন স্ট্যাটাস চেক করতে
+boolean isAnimated = XnetThemeManager.isAnimationEnabled(context);
+```
 
 XML layout-এ সরাসরি ব্যবহার:
 

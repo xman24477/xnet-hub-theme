@@ -139,15 +139,19 @@ public class XnetAnimatedBackdropView extends View {
 
         drawNebula(canvas, drawWidth, drawHeight, accentPrimary, accentHighlight, elapsed, isCyberRGB);
         drawGrid(canvas, drawWidth, drawHeight, gridColor);
-        drawElectricArcs(canvas, drawWidth, drawHeight, accentPrimary, accentHighlight, elapsed, isCyberRGB);
-        drawStars(canvas, drawWidth, drawHeight, accentPrimary, accentHighlight, elapsed, isCyberRGB);
-        drawMeteors(canvas, drawWidth, drawHeight, accentPrimary, accentHighlight, elapsed, isCyberRGB);
+        if (XnetThemeManager.isAnimationEnabled(getContext())) {
+            drawElectricArcs(canvas, drawWidth, drawHeight, accentPrimary, accentHighlight, elapsed, isCyberRGB);
+            drawStars(canvas, drawWidth, drawHeight, accentPrimary, accentHighlight, elapsed, isCyberRGB);
+            drawMeteors(canvas, drawWidth, drawHeight, accentPrimary, accentHighlight, elapsed, isCyberRGB);
+        }
         drawScanLines(canvas, drawWidth, drawHeight);
 
         // Restore canvas state to prevent side effects
         canvas.restore();
 
-        postInvalidateOnAnimation();
+        if (XnetThemeManager.isAnimationEnabled(getContext())) {
+            postInvalidateOnAnimation();
+        }
     }
 
     private boolean resolveThemeBoolean(int attrResId) {

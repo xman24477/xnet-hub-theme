@@ -125,6 +125,12 @@ public class XnetBottomNavigationView extends BottomNavigationView
             setItemIconTintList(createStateList(mTextSecondary, mAccentColor));
             setItemTextColor(createStateList(mTextSecondary, mAccentColor));
             setLabelVisibilityMode(NavigationBarView.LABEL_VISIBILITY_LABELED);
+            
+            // Fix missing selected background indicator:
+            setItemActiveIndicatorEnabled(true);
+            // Apply 40 alpha (~25%) of accent color for the indicator pill
+            int pillColor = (mAccentColor & 0x00FFFFFF) | (0x40 << 24);
+            setItemActiveIndicatorColor(ColorStateList.valueOf(pillColor));
         }
 
         // Edge-to-edge: push content above system navigation bar on both theme types

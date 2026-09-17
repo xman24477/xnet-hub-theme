@@ -287,4 +287,25 @@ public class XnetSearchBar extends LinearLayout {
     public EditText getEditText() {
         return mEditText;
     }
+
+    @Override
+    public void setVisibility(int visibility) {
+        super.setVisibility(visibility);
+        if (visibility == View.VISIBLE && mEditText != null) {
+            mEditText.post(() -> {
+                mEditText.requestFocus();
+                android.view.inputmethod.InputMethodManager imm = (android.view.inputmethod.InputMethodManager) getContext().getSystemService(android.content.Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.showSoftInput(mEditText, android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT);
+                }
+            });
+        } else if (visibility == View.GONE || visibility == View.INVISIBLE) {
+            if (mEditText != null) {
+                android.view.inputmethod.InputMethodManager imm = (android.view.inputmethod.InputMethodManager) getContext().getSystemService(android.content.Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
+                }
+            }
+        }
+    }
 }

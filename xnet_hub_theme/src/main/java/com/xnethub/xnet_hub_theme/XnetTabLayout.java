@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,7 +73,9 @@ public class XnetTabLayout extends TabLayout {
 
         if (mIsCyberTheme) {
             try {
-                mRajdhaniFont = context.getResources().getFont(R.font.rajdhani);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    mRajdhaniFont = context.getResources().getFont(R.font.rajdhani);
+                }
             } catch (Exception ignored) {}
 
             // Outer Header Shell — 14dp Cut Corner (Top-Right & Bottom-Left) + Stroke

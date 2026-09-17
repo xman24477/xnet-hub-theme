@@ -70,6 +70,9 @@ public class XnetThemeManager {
         return prefs.getString(KEY_THEME, THEME_SYSTEM);
     }
 
+    public static final String KEY_ANIMATION_ENABLED = "xnet_animation_enabled";
+
+    // ... existing ...
     public static void setFont(Context context, String fontName) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         prefs.edit().putString(KEY_FONT, fontName).apply();
@@ -78,6 +81,17 @@ public class XnetThemeManager {
     public static String getFont(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         return prefs.getString(KEY_FONT, FONT_DEFAULT);
+    }
+    
+    public static void setAnimationEnabled(Context context, boolean enabled) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        prefs.edit().putBoolean(KEY_ANIMATION_ENABLED, enabled).apply();
+    }
+
+    public static boolean isAnimationEnabled(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        // Default to true (animations on by default)
+        return prefs.getBoolean(KEY_ANIMATION_ENABLED, true);
     }
 
     /**
