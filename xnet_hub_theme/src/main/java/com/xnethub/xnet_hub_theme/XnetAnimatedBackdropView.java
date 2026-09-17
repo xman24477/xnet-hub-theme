@@ -40,6 +40,12 @@ public class XnetAnimatedBackdropView extends View {
     private final Path meteorPath = new Path();
 
     private long startTimeMs;
+    private boolean isFrozen = false;
+
+    public void setFrozen(boolean frozen) {
+        this.isFrozen = frozen;
+        invalidate();
+    }
 
     public XnetAnimatedBackdropView(@NonNull Context context) {
         this(context, null);
@@ -159,7 +165,9 @@ public class XnetAnimatedBackdropView extends View {
         canvas.restore();
 
         if (XnetThemeManager.isAnimationEnabled(getContext())) {
+            if (!isFrozen) {
             postInvalidateOnAnimation();
+        }
         }
     }
 
