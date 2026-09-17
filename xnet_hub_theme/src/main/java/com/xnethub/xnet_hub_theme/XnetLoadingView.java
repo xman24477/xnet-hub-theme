@@ -41,7 +41,7 @@ public class XnetLoadingView extends View {
     private static final float ARC_SWEEP_DEGREES      = 280f;
 
     // Terminal style config
-    private static final String[] TERMINAL_TEXTS = {
+    private String[] mTerminalTexts = {
         "INITIALIZING...",
         "CONNECTING...",
         "LOADING...",
@@ -98,6 +98,23 @@ public class XnetLoadingView extends View {
             mHandler.removeCallbacksAndMessages(null);
         }
         invalidate();
+    }
+
+    /** Set custom text to type instead of default cycle */
+    public void setText(String text) {
+        if (text != null && !text.isEmpty()) {
+            mTerminalTexts = new String[]{ text.toUpperCase() };
+        } else {
+            mTerminalTexts = new String[]{
+                "INITIALIZING...",
+                "CONNECTING...",
+                "LOADING...",
+                "PLEASE WAIT..."
+            };
+        }
+        if (mStyle == STYLE_TERMINAL) {
+            startTerminalAnimation();
+        }
     }
 
     // -----------------------------------------------------------------------
@@ -179,7 +196,7 @@ public class XnetLoadingView extends View {
         @Override
         public void run() {
             if (!isAttachedToWindow()) return;
-            String target = TERMINAL_TEXTS[mCurrentTextIndex];
+            String target = mTerminalTexts[mCurrentTextIndex];
 
             if (!mIsClearing) {
                 // Typing phase
@@ -208,7 +225,7 @@ public class XnetLoadingView extends View {
                     // Move to next text
                     mIsClearing = false;
                     mCurrentCharIndex = 0;
-                    mCurrentTextIndex = (mCurrentTextIndex + 1) % TERMINAL_TEXTS.length;
+                    mCurrentTextIndex = (mCurrentTextIndex + 1) % mTerminalTexts.length;
                     mHandler.postDelayed(this, 200L);
                 }
             }
@@ -314,3 +331,4 @@ public class XnetLoadingView extends View {
         try { return ta.getBoolean(0, fallback); } finally { ta.recycle(); }
     }
 }
+
