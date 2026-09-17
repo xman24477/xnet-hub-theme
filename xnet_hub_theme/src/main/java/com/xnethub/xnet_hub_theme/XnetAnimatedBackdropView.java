@@ -110,21 +110,30 @@ public class XnetAnimatedBackdropView extends View {
         int gridColor = resolveThemeColor(R.attr.xnetStroke);
 
         // Determine window screen coordinates
-        getLocationOnScreen(screenLocation);
-        int offsetX = screenLocation[0];
-        int offsetY = screenLocation[1];
-
+        int offsetX = 0;
+        int offsetY = 0;
+        
         // Resolve absolute display dimensions
         int screenWidth = getResources().getDisplayMetrics().widthPixels;
         int screenHeight = getResources().getDisplayMetrics().heightPixels;
 
-        // Ensure we cover the full drawing space safely
-        int drawWidth = Math.max(screenWidth, width + offsetX);
-        int drawHeight = Math.max(screenHeight, height + offsetY);
+        int drawWidth = width;
+        int drawHeight = height;
+
+        // Global coordinate translation for seamless animations across views
+        if (XnetThemeManager.isAnimationEnabled(getContext())) {
+            getLocationOnScreen(screenLocation);
+            offsetX = screenLocation[0];
+            offsetY = screenLocation[1];
+            drawWidth = Math.max(screenWidth, width + offsetX);
+            drawHeight = Math.max(screenHeight, height + offsetY);
+        }
 
         // Save canvas state and apply coordinate translation
         canvas.save();
-        canvas.translate(-offsetX, -offsetY);
+        if (offsetX != 0 || offsetY != 0) {
+            canvas.translate(-offsetX, -offsetY);
+        }
 
         fillPaint.setShader(new LinearGradient(
                 0f,
