@@ -128,9 +128,23 @@ public class XnetBottomNavigationView extends BottomNavigationView
             
             // Fix missing selected background indicator:
             setItemActiveIndicatorEnabled(true);
-            // Apply 40 alpha (~25%) of accent color for the indicator pill
-            int pillColor = (mAccentColor & 0x00FFFFFF) | (0x40 << 24);
+            // Apply ~20% (0x33) alpha of accent color for the indicator pill
+            int pillColor = (mAccentColor & 0x00FFFFFF) | (0x33 << 24);
             setItemActiveIndicatorColor(ColorStateList.valueOf(pillColor));
+            
+            // Explicitly force width, height and shape so it doesn't get overridden by broken styles
+            setItemActiveIndicatorWidth((int) (64 * density));
+            setItemActiveIndicatorHeight((int) (32 * density));
+            
+            try {
+                com.google.android.material.shape.ShapeAppearanceModel pillShape = 
+                    com.google.android.material.shape.ShapeAppearanceModel.builder()
+                    .setAllCornerSizes(16 * density)
+                    .build();
+                setItemActiveIndicatorShapeAppearance(pillShape);
+            } catch (Exception ignored) {
+                // In case of older material library versions
+            }
         }
 
         // Edge-to-edge: push content above system navigation bar on both theme types
