@@ -51,16 +51,15 @@ public class XnetToast {
         int accentColor = Color.GREEN;
         String prefix = "> NOTE";
 
+        TypedValue tv = new TypedValue();
         if (type == XnetCalloutCard.CalloutType.WARNING) {
-            accentColor = androidx.core.content.ContextCompat.getColor(context, R.color.xnet_color_cyber_orange_accent_primary);
+            if (context.getTheme().resolveAttribute(R.attr.xnetSemanticWarning, tv, true)) accentColor = tv.data;
             prefix = "> WARNING";
         } else if (type == XnetCalloutCard.CalloutType.ERROR) {
-            accentColor = androidx.core.content.ContextCompat.getColor(context, R.color.xnet_color_cyber_rgb_accent_primary);
+            if (context.getTheme().resolveAttribute(R.attr.xnetSemanticError, tv, true)) accentColor = tv.data;
             prefix = "> ERROR";
         } else {
-            if (context.getTheme().resolveAttribute(R.attr.xnetAccentPrimary, tv, true)) {
-                accentColor = tv.data;
-            }
+            if (context.getTheme().resolveAttribute(R.attr.xnetSemanticInfo, tv, true)) accentColor = tv.data;
         }
 
         // Resolve surface color to act as a dark solid base

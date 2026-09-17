@@ -22,6 +22,9 @@
     <attr name="xnetTextHint" format="color" />
     
     <!-- Accent Colors -->
+    <attr name="xnetSemanticError" format="color" />
+    <attr name="xnetSemanticWarning" format="color" />
+    <attr name="xnetSemanticInfo" format="color" />
     <attr name="xnetAccentPrimary" format="color" />
     <attr name="xnetAccentSecondary" format="color" />
     <attr name="xnetAccentPrimarySoft" format="color" />
@@ -48,3 +51,4 @@
     <attr name="xnetShapeDrawerProfile" format="reference" />
     <attr name="xnetShapeSpinnerDrawable" format="reference" />
 </resources>
+

@@ -4,6 +4,9 @@
     <!-- BASE THEME FOR ALL XNET APPS              -->
     <!-- ========================================= -->
     <style name="Theme.XnetCore.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="xnetSemanticError">#FF4444</item>
+        <item name="xnetSemanticWarning">#FFC107</item>
+        <item name="xnetSemanticInfo">#00D4FF</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">?attr/xnetBackground</item>
@@ -67,6 +70,9 @@
     <!-- 1. LIGHT THEME (Normal Standard)          -->
     <!-- ========================================= -->
     <style name="Theme.XnetCore.Light" parent="Theme.XnetCore.Base">
+        <item name="xnetSemanticError">#FF4444</item>
+        <item name="xnetSemanticWarning">#FFC107</item>
+        <item name="xnetSemanticInfo">#1976D2</item>
         <!-- Colors -->
         <item name="xnetBackground">@color/classic_light_background</item>
         <item name="xnetBackgroundAlt">@color/white</item>

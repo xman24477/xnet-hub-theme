@@ -118,21 +118,19 @@ public class XnetCalloutCard extends LinearLayout {
         int accentColor;
         String prefix;
 
+        TypedValue tv = new TypedValue();
         switch (type) {
             case WARNING:
-                accentColor = androidx.core.content.ContextCompat.getColor(getContext(), R.color.xnet_color_cyber_orange_accent_primary);
+                if (getContext().getTheme().resolveAttribute(R.attr.xnetSemanticWarning, tv, true)) accentColor = tv.data;
                 prefix = "> WARNING";
                 break;
             case ERROR:
-                // Use a hard-coded red since xnetAccentNegative attr is not yet declared
-                accentColor = androidx.core.content.ContextCompat.getColor(getContext(), R.color.xnet_color_cyber_rgb_accent_primary);
+                if (getContext().getTheme().resolveAttribute(R.attr.xnetSemanticError, tv, true)) accentColor = tv.data;
                 prefix = "> ERROR";
                 break;
-            default: // INFO
-                accentColor = Color.GREEN;
-                if (ctx.getTheme().resolveAttribute(R.attr.xnetAccentPrimary, tv, true)) {
-                    accentColor = tv.data;
-                }
+            case INFO:
+            default:
+                if (getContext().getTheme().resolveAttribute(R.attr.xnetSemanticInfo, tv, true)) accentColor = tv.data;
                 prefix = "> NOTE";
                 break;
         }
