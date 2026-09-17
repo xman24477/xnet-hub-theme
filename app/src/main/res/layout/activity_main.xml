@@ -1,0 +1,569 @@
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:theme="@style/Theme.XnetCore.CyberGreen"
+    android:background="@android:color/transparent">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <!-- Top status bar inset spacer container -->
+    <FrameLayout
+        android:id="@+id/topInsetSpacer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true" />
+
+    <!-- FIXED TOP CYBER TOOLBAR HEADER -->
+    <LinearLayout
+        android:id="@+id/toolbarContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topInsetSpacer"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:background="@android:color/transparent">
+
+        <!-- Left: XnetDrawerButton -->
+        <com.xnethub.xnet_hub_theme.XnetDrawerButton
+            android:id="@+id/btnOpenDrawer"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:padding="8dp" />
+
+        <!-- Center: Title and hidden SearchBar -->
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp">
+
+            <com.xnethub.xnet_hub_theme.XnetBrandTextView
+                android:id="@+id/titleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="?attr/xnetTextPrimary"
+                android:text="Xnet Hub UI Library Test" />
+
+            <com.xnethub.xnet_hub_theme.XnetSearchBar
+                android:id="@+id/xnetSearchBarToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Search..."
+                android:visibility="gone"/>
+        </FrameLayout>
+
+        <!-- Search Icon -->
+        <ImageButton
+            android:id="@+id/btnSearchIcon"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_search"
+            app:tint="?attr/xnetTextPrimary" />
+
+        <!-- Right: XnetOverflowButton -->
+        <com.xnethub.xnet_hub_theme.XnetOverflowButton
+            android:id="@+id/btnOverflowMenu"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:padding="8dp" />
+    </LinearLayout>
+
+    <!-- CENTER SCROLLABLE CONTENT BODY (Bounded between toolbar and bottom nav) -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarContainer"
+        android:layout_above="@id/xnetBottomNav"
+        android:background="@android:color/transparent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:gravity="center_horizontal">
+
+            <!-- ROW 1: THEME & FONT SPINNERS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp"
+                android:weightSum="2"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Select Theme:"
+                        android:textColor="?attr/xnetTextPrimary"
+                        android:layout_marginBottom="8dp"/>
+                    <com.xnethub.xnet_hub_theme.XnetSpinner
+                        android:id="@+id/spinnerThemes"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Select Font:"
+                        android:textColor="?attr/xnetTextPrimary"
+                        android:layout_marginBottom="8dp"/>
+                    <com.xnethub.xnet_hub_theme.XnetSpinner
+                        android:id="@+id/spinnerFonts"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ROW 2: INPUT FIELD, SPINNER & BUTTON -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Themed Toast Test:"
+                android:textColor="?attr/xnetTextSecondary"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp">
+                
+                <com.xnethub.xnet_hub_theme.XnetTextInputLayout
+                    android:id="@+id/inputLayoutTest"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Toast Message"
+                    app:shapeAppearanceOverlay="?attr/xnetShapeInput"
+                    android:layout_marginEnd="8dp">
+
+                    <com.xnethub.xnet_hub_theme.XnetEditText
+                        android:id="@+id/inputEditTextTest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.xnethub.xnet_hub_theme.XnetTextInputLayout>
+
+                <com.xnethub.xnet_hub_theme.XnetSpinner
+                    android:id="@+id/spinnerToastType"
+                    android:layout_width="110dp"
+                    android:layout_height="54dp"
+                    android:layout_marginEnd="8dp"/>
+
+                <com.xnethub.xnet_hub_theme.XnetButton
+                    android:id="@+id/btnShowToast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Show" />
+            </LinearLayout>
+
+            <!-- ROW 3: SWITCH & LOADERS -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Controls &amp; Loading Spinners:"
+                android:textColor="?attr/xnetTextSecondary"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp"
+                android:weightSum="3">
+                
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <com.xnethub.xnet_hub_theme.XnetSwitch
+                        android:id="@+id/xnetSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/switchLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="OFF"
+                        android:textColor="?attr/xnetTextSecondary"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <com.xnethub.xnet_hub_theme.XnetLoadingView
+                    android:id="@+id/loadingViewRing"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"/>
+
+                <com.xnethub.xnet_hub_theme.XnetLoadingView
+                    android:id="@+id/loadingViewTerminal"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <!-- ROW 4: CHIPS (Single & Multi Select equivalent via group) -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Themed Cyber Chips:"
+                android:textColor="?attr/xnetTextSecondary"
+                android:layout_marginBottom="8dp"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupTabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="true"
+                app:selectionRequired="true"
+                android:layout_marginBottom="24dp">
+
+                <com.xnethub.xnet_hub_theme.XnetChip
+                    android:id="@+id/chipSystem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SYSTEM"
+                    android:checkable="true"
+                    android:checked="true"
+                    android:layout_marginEnd="8dp"/>
+
+                <com.xnethub.xnet_hub_theme.XnetChip
+                    android:id="@+id/chipNetwork"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NETWORK"
+                    android:checkable="true"
+                    android:layout_marginEnd="8dp"/>
+
+                <com.xnethub.xnet_hub_theme.XnetChip
+                    android:id="@+id/chipSecure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SECURE"
+                    android:checkable="true"/>
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- ROW 5: TAB LAYOUT -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Themed Cyber TabLayout:"
+                android:textColor="?attr/xnetTextSecondary"
+                android:layout_marginBottom="8dp"/>
+
+            <com.xnethub.xnet_hub_theme.XnetTabLayout
+                android:id="@+id/xnetTabLayoutTest"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                app:tabMode="fixed"
+                app:tabGravity="fill"
+                android:layout_marginBottom="24dp">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OVERVIEW" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ANALYTICS" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TERMINAL" />
+            </com.xnethub.xnet_hub_theme.XnetTabLayout>
+
+            <!-- ROW 6: AUDIO PLAYER -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cyber Audio Turntable Player:"
+                android:textColor="?attr/xnetTextSecondary"
+                android:layout_marginBottom="8dp"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="?attr/xnetSurfaceAlt"
+                app:strokeColor="?attr/xnetStroke"
+                app:strokeWidth="1.5dp"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <com.xnethub.xnet_hub_theme.XnetAudioDiscView
+                        android:id="@+id/audioDiscTurntable"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_marginBottom="14dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_xnet_audio_control_button_ripple"
+                            android:padding="8dp"
+                            android:scaleType="centerInside"
+                            app:srcCompat="@android:drawable/ic_media_previous"
+                            app:tint="?attr/xnetTextPrimary" />
+
+                        <ImageButton
+                            android:id="@+id/btnAudioPlayPause"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp"
+                            android:background="@drawable/bg_xnet_audio_play_hex_ripple"
+                            android:padding="14dp"
+                            android:scaleType="centerInside"
+                            app:srcCompat="@android:drawable/ic_media_play" />
+
+                        <ImageButton
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_xnet_audio_control_button_ripple"
+                            android:padding="8dp"
+                            android:scaleType="centerInside"
+                            app:srcCompat="@android:drawable/ic_media_next"
+                            app:tint="?attr/xnetTextPrimary" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ROW 7: PROGRESS BAR -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Progress Bar:"
+                android:textColor="?attr/xnetTextSecondary"
+                android:layout_marginBottom="8dp"/>
+
+            <com.xnethub.xnet_hub_theme.XnetProgressBar
+                android:id="@+id/xnetProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- ROW 8: NEON DIVIDER -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Neon Divider:"
+                android:textColor="?attr/xnetTextSecondary"
+                android:layout_marginBottom="8dp"/>
+
+            <com.xnethub.xnet_hub_theme.XnetDivider
+                android:id="@+id/xnetDivider"
+                android:layout_width="match_parent"
+                android:layout_height="14dp"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- BADGE VIEW & SEARCH BAR (Standalone tests) -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Badge View (Standalone):"
+                android:textColor="?attr/xnetTextSecondary"
+                android:layout_marginBottom="8dp"/>
+
+            <com.xnethub.xnet_hub_theme.XnetBadgeView
+                android:id="@+id/xnetBadgeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Themed Cyber Search Bar Test:"
+                android:textColor="?attr/xnetTextSecondary"
+                android:layout_marginBottom="8dp"/>
+
+            <com.xnethub.xnet_hub_theme.XnetSearchBar
+                android:id="@+id/xnetSearchBarTest"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="Search files, modules, logs..."
+                android:layout_marginBottom="24dp"/>
+
+            <!-- ROW 9: MISSING ANIMATION WIDGETS -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Animation Image Effects:"
+                android:textColor="?attr/xnetTextSecondary"
+                android:layout_marginBottom="8dp"/>
+
+            <com.xnethub.xnet_hub_theme.XnetGlitchTextView
+                android:id="@+id/xnetGlitchText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SYSTEM GLITCH"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"/>
+
+            <com.xnethub.xnet_hub_theme.XnetPulseGlowView
+                android:id="@+id/xnetPulseGlow"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="16dp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="#20000000"
+                android:layout_marginBottom="16dp">
+                
+                <com.xnethub.xnet_hub_theme.XnetScanLineView
+                    android:id="@+id/xnetScanLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                    
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Scan Line Effect"
+                    android:textColor="?attr/xnetTextPrimary"/>
+            </FrameLayout>
+
+            <com.xnethub.xnet_hub_theme.XnetImageView
+                android:id="@+id/xnetImageViewTest"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:scaleType="centerCrop"/>
+                
+            <com.xnethub.xnet_hub_theme.XnetTypingTextView
+                android:id="@+id/xnetTypingTextTest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:textSize="14sp"
+                android:textColor="?attr/xnetTextPrimary"/>
+
+            <!-- ROW 10: CALLOUT CARDS -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Callout Cards:"
+                android:textColor="?attr/xnetTextSecondary"
+                android:layout_marginBottom="8dp"/>
+
+            <com.xnethub.xnet_hub_theme.XnetCalloutCard
+                android:id="@+id/calloutInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <com.xnethub.xnet_hub_theme.XnetCalloutCard
+                android:id="@+id/calloutWarning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <com.xnethub.xnet_hub_theme.XnetCalloutCard
+                android:id="@+id/calloutError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- FLOATING CYBER ACTION BUTTON (XnetFab) FIXED ABOVE BOTTOM NAV -->
+    <com.xnethub.xnet_hub_theme.XnetFab
+        android:id="@+id/xnetFabTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/xnetBottomNav"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="Cyber Action"
+        android:src="@android:drawable/ic_input_add" />
+
+    <!-- XNET DIVIDER — separates content from bottom nav bar -->
+    <com.xnethub.xnet_hub_theme.XnetDivider
+        android:id="@+id/bottomNavDivider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_above="@id/xnetBottomNav" />
+
+    <!-- BOTTOM NAVIGATION BAR — no dock shell, icons + labels only -->
+    <!-- System nav bar inset applied as paddingBottom internally -->
+    <com.xnethub.xnet_hub_theme.XnetBottomNavigationView
+        android:id="@+id/xnetBottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/menu_bottom_nav" />
+
+    <!-- Bottom inset spacer (reserved for future use / status-bar backdrop) -->
+    <FrameLayout
+        android:id="@+id/bottomInsetSpacer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>
+
+    <!-- XNET DRAWER PANEL -->
+    <include
+        android:id="@+id/drawerPanel"
+        layout="@layout/xnet_drawer_content" />
+
+</androidx.drawerlayout.widget.DrawerLayout>
