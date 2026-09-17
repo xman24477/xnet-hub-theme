@@ -11,7 +11,7 @@ https://github.com/xman24477/xnet-hub-theme
 JitPack dependency page:
 
 ```text
-https://jitpack.io/#xman24477/xnet-hub-theme/1.1.12
+https://jitpack.io/#xman24477/xnet-hub-theme/1.1.13
 ```
 
 ## ইনস্টলেশন
@@ -33,7 +33,7 @@ dependencyResolutionManagement {
 
 ```gradle
 dependencies {
-    implementation 'com.github.xman24477:xnet-hub-theme:1.1.12'
+    implementation 'com.github.xman24477:xnet-hub-theme:1.1.13'
 }
 ```
 

@@ -44,7 +44,7 @@ public class XnetToast {
         final LinearLayout card = new LinearLayout(context);
         card.setOrientation(LinearLayout.HORIZONTAL);
         int paddingPx = dp(context, 12);
-        card.setPadding(0, paddingPx, paddingPx, paddingPx);
+        card.setPadding(dp(context, 17), paddingPx, paddingPx, paddingPx);
 
         // Setup Callout Colors
         TypedValue tv = new TypedValue();
@@ -69,25 +69,24 @@ public class XnetToast {
             surfaceColor = tv.data;
         }
 
-        // Blend 12% accent color into the surface color for a subtle themed tint
-        int blendedBg = ColorUtils.blendARGB(surfaceColor, accentColor, 0.12f);
-        // Apply 92% opacity (alpha 235 out of 255) so it's mostly solid but slightly see-through
-        int finalBgColor = ColorUtils.setAlphaComponent(blendedBg, 235);
+        // Create 3-color transparent gradient based on accentColor and surfaceColor
+        int color1 = ColorUtils.blendARGB(surfaceColor, accentColor, 0.15f);
+        int color2 = ColorUtils.blendARGB(surfaceColor, accentColor, 0.40f);
+        int color3 = ColorUtils.blendARGB(surfaceColor, accentColor, 0.70f);
 
-        GradientDrawable bgDrawable = new GradientDrawable();
-        bgDrawable.setColor(finalBgColor);
-        bgDrawable.setCornerRadius(dp(context, 6));
-        // Add a very subtle stroke of the accent color to define the edges better against busy backgrounds
-        bgDrawable.setStroke(dp(context, 1), ColorUtils.setAlphaComponent(accentColor, 80));
+        color1 = ColorUtils.setAlphaComponent(color1, 230); // 90% alpha
+        color2 = ColorUtils.setAlphaComponent(color2, 180); // 70% alpha
+        color3 = ColorUtils.setAlphaComponent(color3, 130); // 50% alpha
+
+        int[] gradientColors = new int[] { color1, color2, color3 };
+        int strokeColor = ColorUtils.setAlphaComponent(accentColor, 80);
+        
+        CyberToastBackgroundDrawable bgDrawable = new CyberToastBackgroundDrawable(
+                gradientColors, dp(context, 12), strokeColor, dp(context, 1), accentColor, dp(context, 3)
+        );
         card.setBackground(bgDrawable);
 
-        // Left border strip
-        View leftBorder = new View(context);
-        LinearLayout.LayoutParams borderParams = new LinearLayout.LayoutParams(dp(context, 3), LinearLayout.LayoutParams.MATCH_PARENT);
-        borderParams.setMarginEnd(dp(context, 14));
-        leftBorder.setLayoutParams(borderParams);
-        leftBorder.setBackgroundColor(accentColor);
-        card.addView(leftBorder);
+        // Left border is now drawn by CyberToastBackgroundDrawable
 
         // Text container
         LinearLayout textContainer = new LinearLayout(context);
@@ -167,5 +166,101 @@ public class XnetToast {
 
     private static int dp(Context ctx, float dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, ctx.getResources().getDisplayMetrics());
+    }
+}
+
+    private static class CyberToastBackgroundDrawable extends android.graphics.drawable.Drawable {
+        private final android.graphics.Paint paint;
+        private final android.graphics.Path path;
+        private final int[] colors;
+        private final float cutSizePx;
+        private final android.graphics.Paint strokePaint;
+        private final float strokeWidthPx;
+
+        private final int leftBorderColor;
+        private final float leftBorderWidthPx;
+
+        public CyberToastBackgroundDrawable(int[] gradientColors, float cutSizePx, int strokeColor, float strokeWidthPx, int leftBorderColor, float leftBorderWidthPx) {
+            this.colors = gradientColors;
+            this.cutSizePx = cutSizePx;
+            this.strokeWidthPx = strokeWidthPx;
+            this.leftBorderColor = leftBorderColor;
+            this.leftBorderWidthPx = leftBorderWidthPx;
+            
+            paint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
+            path = new android.graphics.Path();
+            
+            strokePaint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
+            strokePaint.setStyle(android.graphics.Paint.Style.STROKE);
+            strokePaint.setStrokeWidth(strokeWidthPx);
+            strokePaint.setColor(strokeColor);
+        }
+
+        @Override
+        protected void onBoundsChange(android.graphics.Rect bounds) {
+            super.onBoundsChange(bounds);
+            
+            android.graphics.LinearGradient gradient = new android.graphics.LinearGradient(
+                bounds.left, bounds.top, bounds.right, bounds.bottom,
+                colors, null, android.graphics.Shader.TileMode.CLAMP
+            );
+            paint.setShader(gradient);
+            
+            float w = bounds.width();
+            float h = bounds.height();
+            
+            path.reset();
+            // Start top-left (normal)
+            path.moveTo(0, 0);
+            // Go to top-right minus cut
+            path.lineTo(w - cutSizePx, 0);
+            // Cut to top-right down
+            path.lineTo(w, cutSizePx);
+            // Go to bottom-right (normal)
+            path.lineTo(w, h);
+            // Go to bottom-left plus cut
+            path.lineTo(cutSizePx, h);
+            // Cut to bottom-left up
+            path.lineTo(0, h - cutSizePx);
+            // Close back to top-left
+            path.close();
+        }
+
+        
+        @Override
+        public void draw(@androidx.annotation.NonNull android.graphics.Canvas canvas) {
+            canvas.drawPath(path, paint);
+            if (strokeWidthPx > 0) {
+                canvas.drawPath(path, strokePaint);
+            }
+            if (leftBorderWidthPx > 0) {
+                android.graphics.Paint borderPaint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
+                borderPaint.setColor(leftBorderColor);
+                borderPaint.setStyle(android.graphics.Paint.Style.FILL);
+                
+                android.graphics.Path borderPath = new android.graphics.Path();
+                borderPath.moveTo(0, 0);
+                borderPath.lineTo(leftBorderWidthPx, 0);
+                
+                // Bottom is cut, so we calculate the intersection
+                // The bottom-left cut goes from (0, h - cutSize) to (cutSize, h)
+                // Equation of cut line: y - (h - cutSize) = (x - 0) * (cutSize) / (cutSize)
+                // y = x + h - cutSize
+                // So at x = leftBorderWidthPx, y = leftBorderWidthPx + h - cutSize
+                float h = getBounds().height();
+                
+                borderPath.lineTo(leftBorderWidthPx, leftBorderWidthPx + h - cutSizePx);
+                borderPath.lineTo(0, h - cutSizePx);
+                borderPath.close();
+                
+                canvas.drawPath(borderPath, borderPaint);
+            }
+        }
+@Override
+        public void setAlpha(int alpha) { paint.setAlpha(alpha); }
+        @Override
+        public void setColorFilter(@androidx.annotation.Nullable android.graphics.ColorFilter colorFilter) { paint.setColorFilter(colorFilter); }
+        @Override
+        public int getOpacity() { return android.graphics.PixelFormat.TRANSLUCENT; }
     }
 }
