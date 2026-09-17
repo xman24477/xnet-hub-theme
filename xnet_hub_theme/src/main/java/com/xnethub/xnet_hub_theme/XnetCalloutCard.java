@@ -115,8 +115,8 @@ public class XnetCalloutCard extends LinearLayout {
         TypedValue tv = new TypedValue();
         Context ctx = getContext();
 
-        int accentColor;
-        String prefix;
+        int accentColor = Color.GREEN;
+        String prefix = "> NOTE";
 
         switch (type) {
             case WARNING:
@@ -161,4 +161,5 @@ public class XnetCalloutCard extends LinearLayout {
             TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
     }
 }
+
 
