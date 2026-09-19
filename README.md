@@ -11,7 +11,7 @@ https://github.com/xman24477/xnet-hub-theme
 JitPack dependency page:
 
 ```text
-https://jitpack.io/#xman24477/xnet-hub-theme/1.1.25
+https://jitpack.io/#xman24477/xnet-hub-theme/1.1.26
 ```
 
 ## ইনস্টলেশন
@@ -33,7 +33,7 @@ dependencyResolutionManagement {
 
 ```gradle
 dependencies {
-    implementation 'com.github.xman24477:xnet-hub-theme:1.1.25'
+    implementation 'com.github.xman24477:xnet-hub-theme:1.1.26'
 }
 ```
 
@@ -1382,11 +1382,12 @@ public class MainActivity extends XnetBaseActivity {
                 return true;
             });
 
-            // TEST: Load profile picture from URL into the nav_profile item
+            // TEST: Load profile picture from URL with offline caching for nav_profile item
+            String testUserId = "OGP445ls6UYvfCkJtXDbhmuA5hp2";
             String testProfileUrl = "https://firebasestorage.googleapis.com/v0/b/xnet-hub.appspot.com"
                     + "/o/profile_images%2FOGP445ls6UYvfCkJtXDbhmuA5hp2.jpg"
                     + "?alt=media&token=f2f75ba3-3c8a-42bf-bb76-8429406675e7";
-            bottomNav.setNavItemPhotoUrl(R.id.nav_profile, testProfileUrl);
+            bottomNav.setNavItemPhotoUrl(R.id.nav_profile, testProfileUrl, testUserId);
 
             // TEST: Notification Badge
             bottomNav.setNotificationBadge(R.id.nav_notifications, 5);

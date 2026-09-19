@@ -71,12 +71,50 @@ public final class XnetNavIconHelper {
      */
     public static void loadFromUrl(Context context, String imageUrl,
                                    int sizePx, IconCallback callback) {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
+        loadFromUrlWithCache(context, imageUrl, null, sizePx, callback);
+    }
+
+    /**
+     * Offline-first async loader:
+     * 1. If {@code userId} is provided and a cached image exists locally, delivers it immediately
+     *    on the main thread (zero latency / works 100% offline).
+     * 2. In the background, checks the network for an updated image from {@code imageUrl}.
+     * 3. When downloaded successfully, caches it for offline use and refreshes the callback.
+     *
+     * @param context    Activity or application context.
+     * @param imageUrl   Full HTTP/HTTPS URL to the image (Firebase Storage, CDN, …).
+     * @param userId     Unique user ID for local caching (or null to skip caching).
+     * @param sizePx     Desired icon size in pixels.
+     * @param callback   Called on the main thread with the ready {@link Drawable}.
+     */
+    public static void loadFromUrlWithCache(Context context, String imageUrl,
+                                           @androidx.annotation.Nullable String userId,
+                                           int sizePx, IconCallback callback) {
         Handler mainHandler = new Handler(Looper.getMainLooper());
 
+        // 1. Check local cache first — instant offline load
+        if (userId != null && !userId.trim().isEmpty()) {
+            Bitmap cached = XnetProfileCacheManager.getCachedProfile(context, userId);
+            if (cached != null) {
+                Drawable cachedIcon = fromBitmap(context, cached, sizePx);
+                mainHandler.post(() -> callback.onIconReady(cachedIcon));
+            }
+        }
+
+        // 2. Fetch latest from network in background (if URL is valid)
+        if (imageUrl == null || imageUrl.trim().isEmpty()) {
+            return;
+        }
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
             Bitmap raw = downloadBitmap(imageUrl);
             if (raw == null) return;
+
+            // Cache for subsequent launches & offline availability
+            if (userId != null && !userId.trim().isEmpty()) {
+                XnetProfileCacheManager.saveProfileToCache(context, userId, raw);
+            }
 
             Drawable icon = fromBitmap(context, raw, sizePx);
             mainHandler.post(() -> callback.onIconReady(icon));

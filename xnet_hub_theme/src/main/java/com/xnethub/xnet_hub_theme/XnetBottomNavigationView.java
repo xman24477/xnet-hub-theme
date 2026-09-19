@@ -356,6 +356,32 @@ public class XnetBottomNavigationView extends BottomNavigationView
     // -----------------------------------------------------------------------
 
     /**
+     * Sets a local or in-memory {@link Bitmap} as the nav item icon, rendered with
+     * the same hexagon-clip + neon stroke style as {@link XnetImageView}
+     * (or circle-clip for Classic themes).
+     *
+     * Works completely offline with zero latency.
+     * The item is registered internally so its icon is NEVER colour-filtered,
+     * preserving the original photo colours regardless of selection state.
+     *
+     * @param menuItemId Menu item ID, e.g. {@code R.id.nav_profile}.
+     * @param bitmap     Source bitmap (e.g. from local cache, gallery, or camera).
+     */
+    public void setNavItemBitmap(int menuItemId, @Nullable Bitmap bitmap) {
+        if (bitmap == null) return;
+        mPhotoItemIds.add(menuItemId);
+
+        int sizePx = (int) (48 * getResources().getDisplayMetrics().density);
+        Drawable icon = XnetNavIconHelper.fromBitmap(getContext(), bitmap, sizePx);
+        MenuItem item = getMenu().findItem(menuItemId);
+        if (item != null) {
+            item.setIcon(icon);
+            clearTintOnPhotoItem(menuItemId);
+            post(this::updateCyberItems);
+        }
+    }
+
+    /**
      * Loads a photo from {@code imageUrl} in a background thread, renders it
      * with the same hexagon-clip + neon stroke style as {@link XnetImageView}
      * (or circle-clip for Classic themes), then sets it as the nav item icon.
@@ -367,10 +393,25 @@ public class XnetBottomNavigationView extends BottomNavigationView
      * @param imageUrl    Full HTTP/HTTPS URL (Firebase Storage, CDN, …).
      */
     public void setNavItemPhotoUrl(int menuItemId, String imageUrl) {
+        setNavItemPhotoUrl(menuItemId, imageUrl, null);
+    }
+
+    /**
+     * Offline-first photo loader:
+     * 1. If {@code userId} is provided, loads the locally cached profile picture instantly
+     *    (works 100% offline).
+     * 2. In the background, checks and downloads any updated image from {@code imageUrl}.
+     * 3. When updated, saves to the user's private cache and refreshes the nav icon.
+     *
+     * @param menuItemId  Menu item ID, e.g. {@code R.id.nav_profile}.
+     * @param imageUrl    Full HTTP/HTTPS URL (Firebase Storage, CDN, …).
+     * @param userId      Unique user ID (e.g. Firebase Auth UID) for offline caching.
+     */
+    public void setNavItemPhotoUrl(int menuItemId, String imageUrl, @Nullable String userId) {
         mPhotoItemIds.add(menuItemId);
 
         int sizePx = (int) (48 * getResources().getDisplayMetrics().density);
-        XnetNavIconHelper.loadFromUrl(getContext(), imageUrl, sizePx, icon -> {
+        XnetNavIconHelper.loadFromUrlWithCache(getContext(), imageUrl, userId, sizePx, icon -> {
             MenuItem item = getMenu().findItem(menuItemId);
             if (item != null) {
                 item.setIcon(icon);
