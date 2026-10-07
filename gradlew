@@ -118,6 +118,10 @@ CLASSPATH="\\\"\\\""
 
 
 # Determine the Java command to use to start the JVM.
+if [ -n "$JAVA_HOME" ] && [ ! -x "$JAVA_HOME/bin/java" ] && [ ! -x "$JAVA_HOME/jre/sh/java" ]; then
+    unset JAVA_HOME
+fi
+
 if [ -n "$JAVA_HOME" ] ; then
     if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
         # IBM's JDK on AIX uses strange locations for the executables

@@ -1,4 +1,5 @@
-﻿jdk:
+jdk:
   - openjdk17
 before_install:
+  - git config --global --add safe.directory /build || true
   - chmod +x gradlew

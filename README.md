@@ -11,7 +11,7 @@ https://github.com/xman24477/xnet-hub-theme
 JitPack dependency page:
 
 ```text
-https://jitpack.io/#xman24477/xnet-hub-theme/1.1.28
+https://jitpack.io/#xman24477/xnet-hub-theme/1.1.29
 ```
 
 ## ইনস্টলেশন
@@ -33,7 +33,7 @@ dependencyResolutionManagement {
 
 ```gradle
 dependencies {
-    implementation 'com.github.xman24477:xnet-hub-theme:1.1.28'
+    implementation 'com.github.xman24477:xnet-hub-theme:1.1.29'
 }
 ```
 
@@ -342,7 +342,7 @@ recreate();
 
 Classic light/dark theme-এ normal static background থাকবে। X-Cyber theme variants-এ animated background চালু হবে।
 
-## XnetRadarView (Version 1.1.28 New Feature)
+## XnetRadarView (Version 1.1.29 New Feature)
 
 `XnetRadarView` হলো Xnet ইকোসিস্টেমের জন্য বিশেষভাবে তৈরি একটি টেকনিক্যাল সাই-ফাই রাডার স্ক্যানিং কম্পোনেন্ট।
 
