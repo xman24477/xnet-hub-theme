@@ -50,5 +50,23 @@
     <attr name="xnetShapeDrawerShell" format="reference" />
     <attr name="xnetShapeDrawerProfile" format="reference" />
     <attr name="xnetShapeSpinnerDrawable" format="reference" />
+
+    <!-- XnetRadarView Custom Component Attributes -->
+    <declare-styleable name="XnetRadarView">
+        <attr name="xnetRadarSweepDuration" format="integer" />
+        <attr name="xnetRadarOscillateDuration" format="integer" />
+        <attr name="xnetRadarOscillateEnabled" format="boolean" />
+        <attr name="xnetRadarMinRange" format="float" />
+        <attr name="xnetRadarMaxRange" format="float" />
+        <attr name="xnetRadarRingCount" format="integer" />
+        <attr name="xnetRadarRangeUnit" format="string" />
+        <attr name="xnetRadarShowDegrees" format="boolean" />
+        <attr name="xnetRadarShowRanges" format="boolean" />
+        <attr name="xnetRadarFrostedBackdrop" format="boolean" />
+        <attr name="xnetRadarAutoStart" format="boolean" />
+        <attr name="xnetRadarAccentColor" format="color" />
+        <attr name="android:fontFamily" />
+        <attr name="fontFamily" />
+    </declare-styleable>
 </resources>
 

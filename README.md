@@ -342,6 +342,107 @@ recreate();
 
 Classic light/dark theme-এ normal static background থাকবে। X-Cyber theme variants-এ animated background চালু হবে।
 
+## XnetRadarView (Version 1.1.28 New Feature)
+
+`XnetRadarView` হলো Xnet ইকোসিস্টেমের জন্য বিশেষভাবে তৈরি একটি টেকনিক্যাল সাই-ফাই রাডার স্ক্যানিং কম্পোনেন্ট।
+
+### প্রধান বৈশিষ্ঠ্যসমূহ:
+1. **৩৬০° কন্টিনিউয়াস সুইপিং বিম**: এইচএসএল কালার স্পেসের মাধ্যমে সফট গ্লো ও শার্প লিডিং বিম সহ নিখুঁত রাডার ফ্যান।
+2. **অসিলেটিং আউটার স্কেল (খাস কাটা স্কেল)**: ১২০টি প্রিসিশন নচ (-১৪° থেকে +১৪° স্মুথ অসিলেশন)।
+3. **ডায়নামিক রেঞ্জ পার্টিশন (Dynamic Range & Auto Dividing)**:
+   - কোনো ফিক্সড ২৫-১০০ মিটার সীমাবদ্ধতা নেই।
+   - আপনি কোড বা XML থেকে `minRange` (যেমন: 0), `maxRange` (যেমন: 500, 1000 ইত্যাদি), `ringCount` (রিং এর সংখ্যা) এবং `rangeUnit` (যেমন: "m", "km", "ft") নির্ধারণ করতে পারবেন।
+   - রাডারের খাস কাটা অংশ ও রিংগুলো দূরত্বের ব্যবধান স্বয়ংক্রিয়ভাবে সমান ভাগে ভাগ করে মাঝখানের সংখ্যাগুলো হিসাব করে বসিয়ে দেয়!
+4. **অটোমেটিক থিম ফন্ট রেজোলিউশন**:
+   - ফন্ট হার্ডকোড করা নেই; অ্যাক্টিভ থিম এবং `XnetThemeManager`-এ যে ফন্ট সিলেক্ট করা থাকবে (`Rajdhani`, `Orbitron`, `Share Tech Mono` ইত্যাদি), স্বয়ংক্রিয়ভাবে সেই ফন্টেই ডিগ্রি ও রেঞ্জ মার্কিং রেন্ডার হবে।
+5. **মেমোরি ও ব্যাটারি সেফ লাইফসাইকেল**:
+   - ভিউটি উইন্ডোতে attach হলে অ্যানিমেশন শুরু হয় এবং detach হলে সমস্ত অ্যানিমেটর ও লিসেনার বন্ধ করে মেমোরি লিক প্রতিরোধ করে।
+   - `XnetThemeManager.isAnimationEnabled(context)` ফলস হলে অ্যানিমেশন বন্ধ থাকবে।
+
+### XML Layout কোড
+
+```xml
+<com.xnethub.xnet_hub_theme.XnetRadarView
+    android:id="@+id/xnetRadarView"
+    android:layout_width="280dp"
+    android:layout_height="280dp"
+    android:layout_gravity="center"
+    app:xnetRadarMinRange="0"
+    app:xnetRadarMaxRange="500"
+    app:xnetRadarRingCount="5"
+    app:xnetRadarRangeUnit="m"
+    app:xnetRadarSweepDuration="2500"
+    app:xnetRadarOscillateDuration="3800"
+    app:xnetRadarOscillateEnabled="true"
+    app:xnetRadarShowDegrees="true"
+    app:xnetRadarShowRanges="true"
+    app:xnetRadarFrostedBackdrop="true"
+    app:xnetRadarAutoStart="true" />
+```
+
+### Java কোড উদাহরণ ও গাইডলাইন
+
+```java
+import com.xnethub.xnet_hub_theme.XnetRadarView;
+
+public class ScanActivity extends XnetBaseActivity {
+
+    private XnetRadarView radarView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_scan);
+
+        radarView = findViewById(R.id.xnetRadarView);
+
+        // ১. ডায়নামিক রেঞ্জ কনফিগারেশন (উদাঃ ০ থেকে ৫০০ মিটার, ৫টি সমান ভাগে)
+        // স্বয়ংক্রিয়ভাবে মাঝখানের রিংগুলোতে ১০০m, ২০০m, ৩০০m, ৪০০m, ৫০০m বসে যাবে:
+        radarView.setRange(0f, 500f, 5, "m");
+
+        // কিলোমিটার বা দীর্ঘ দূরত্বের ক্ষেত্রে:
+        // radarView.setRange(0f, 20f, 4, "km"); // ৫km, ১০km, ১৫km, ২০km
+
+        // ২. অ্যানিমেশন ম্যানুয়ালি কন্ট্রোল
+        radarView.startAnimation(); // শুরু করতে
+        // radarView.stopAnimation(); // থামাতে
+
+        // ৩. সুইপ স্পিড ও স্কেল মুভমেন্ট কাস্টমাইজেশন
+        radarView.setSweepDuration(2000L); // ২ সেকেন্ড প্রতি চক্কর
+        radarView.setOscillateEnabled(true); // খাস কাটা স্কেলের অসিলেশন চালু/বন্ধ
+
+        // ৪. কাস্টম কালার বা ফন্ট ওভাররাইড (ঐচ্ছিক)
+        // radarView.setAccentColor(Color.parseColor("#00E5FF"));
+        // radarView.setTypeface(customTypeface);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (radarView != null) {
+            radarView.stopAnimation();
+        }
+    }
+}
+```
+
+### XnetRadarView XML Attributes রেফারেন্স
+
+| Attribute | Format | Default | বিবরণ |
+| :--- | :--- | :--- | :--- |
+| `xnetRadarMinRange` | float | `0` | সর্বনিম্ন রেঞ্জ মান |
+| `xnetRadarMaxRange` | float | `100` | সর্বোচ্চ রেঞ্জ মান |
+| `xnetRadarRingCount` | integer | `4` | দূরত্বের কনসেন্ট্রিক রিং সংখ্যা (ভাগ) |
+| `xnetRadarRangeUnit` | string | `"m"` | দূরত্বের একক (যেমন: "m", "km", "ft") |
+| `xnetRadarSweepDuration` | integer | `2500` | সুইপিং বিমের এক ঘূর্ণনের সময়কাল (ms) |
+| `xnetRadarOscillateDuration` | integer | `3800` | বাইরের স্কেলের একবার দোলনের সময়কাল (ms) |
+| `xnetRadarOscillateEnabled` | boolean | `true` | বাইরের খাস কাটা স্কেল দুলবে কিনা |
+| `xnetRadarShowDegrees` | boolean | `true` | ০০০° থেকে ৩৩০° ডিগ্রি মার্কিং দেখাবে কিনা |
+| `xnetRadarShowRanges` | boolean | `true` | রিংগুলোতে দূরত্বের সংখ্যা টেক্সট দেখাবে কিনা |
+| `xnetRadarFrostedBackdrop` | boolean | `true` | ফ্রস্টেড গ্লাস ব্লার ব্যাকড্রপ ডিস্ক চালু থাকবে কিনা |
+| `xnetRadarAutoStart` | boolean | `true` | উইন্ডোতে যোগ হওয়ার সাথে সাথে অটো-রান হবে কিনা |
+| `xnetRadarAccentColor` | color | Theme Accent | কাস্টম কালার ওভাররাইড |
+
 ## Edge-To-Edge Layout
 
 `XnetBaseActivity` নিজে থেকেই `XnetEdgeToEdge.enable(this)` call করে। Manual setup করলে নিজে call করতে হবে।
