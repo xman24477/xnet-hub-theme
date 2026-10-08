@@ -355,7 +355,7 @@ public class XnetRadarView extends View {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         applyTheme();
-        if (autoStart && XnetThemeManager.isAnimationEnabled(getContext())) {
+        if (autoStart) {
             startAnimation();
         }
     }
@@ -371,7 +371,7 @@ public class XnetRadarView extends View {
         super.onVisibilityChanged(changedView, visibility);
         if (visibility != VISIBLE) {
             stopAnimation();
-        } else if (autoStart && XnetThemeManager.isAnimationEnabled(getContext())) {
+        } else if (autoStart) {
             startAnimation();
         }
     }
@@ -687,10 +687,6 @@ public class XnetRadarView extends View {
     }
 
     public void startAnimation() {
-        if (!XnetThemeManager.isAnimationEnabled(getContext())) {
-            return;
-        }
-
         // 1. Continuous 360 degree sweep animator
         if (sweepAnimator == null) {
             sweepAnimator = ValueAnimator.ofInt(0, 360);

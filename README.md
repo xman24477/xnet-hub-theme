@@ -11,7 +11,7 @@ https://github.com/xman24477/xnet-hub-theme
 JitPack dependency page:
 
 ```text
-https://jitpack.io/#xman24477/xnet-hub-theme/1.1.29
+https://jitpack.io/#xman24477/xnet-hub-theme/1.1.30
 ```
 
 ## ইনস্টলেশন
@@ -33,7 +33,7 @@ dependencyResolutionManagement {
 
 ```gradle
 dependencies {
-    implementation 'com.github.xman24477:xnet-hub-theme:1.1.29'
+    implementation 'com.github.xman24477:xnet-hub-theme:1.1.30'
 }
 ```
 
@@ -342,7 +342,7 @@ recreate();
 
 Classic light/dark theme-এ normal static background থাকবে। X-Cyber theme variants-এ animated background চালু হবে।
 
-## XnetRadarView (Version 1.1.29 New Feature)
+## XnetRadarView (Version 1.1.30 New Feature)
 
 `XnetRadarView` হলো Xnet ইকোসিস্টেমের জন্য বিশেষভাবে তৈরি একটি টেকনিক্যাল সাই-ফাই রাডার স্ক্যানিং কম্পোনেন্ট।
 
@@ -355,9 +355,8 @@ Classic light/dark theme-এ normal static background থাকবে। X-Cyber
    - রাডারের খাস কাটা অংশ ও রিংগুলো দূরত্বের ব্যবধান স্বয়ংক্রিয়ভাবে সমান ভাগে ভাগ করে মাঝখানের সংখ্যাগুলো হিসাব করে বসিয়ে দেয়!
 4. **অটোমেটিক থিম ফন্ট রেজোলিউশন**:
    - ফন্ট হার্ডকোড করা নেই; অ্যাক্টিভ থিম এবং `XnetThemeManager`-এ যে ফন্ট সিলেক্ট করা থাকবে (`Rajdhani`, `Orbitron`, `Share Tech Mono` ইত্যাদি), স্বয়ংক্রিয়ভাবে সেই ফন্টেই ডিগ্রি ও রেঞ্জ মার্কিং রেন্ডার হবে।
-5. **মেমোরি ও ব্যাটারি সেফ লাইফসাইকেল**:
-   - ভিউটি উইন্ডোতে attach হলে অ্যানিমেশন শুরু হয় এবং detach হলে সমস্ত অ্যানিমেটর ও লিসেনার বন্ধ করে মেমোরি লিক প্রতিরোধ করে।
-   - `XnetThemeManager.isAnimationEnabled(context)` ফলস হলে অ্যানিমেশন বন্ধ থাকবে।
+5. **মেমোরি ও ব্যাটারি সেফ লাইফসাইকেল (ব্যাকড্রপ অ্যানিমেশন থেকে স্বাধীন)**:
+   - ভিউটি উইন্ডোতে attach হলে অ্যানিমেশন স্বয়ংক্রিয়ভাবে শুরু হয় এবং detach হলে বন্ধ হয়ে মেমোরি সুরক্ষিত রাখে। এটি অ্যাক্টিভিটি ব্যাকড্রপ অ্যানিমেশন টগল থেকে সম্পূর্ণ স্বাধীন এবং সবসময় চলমান থাকে।
 
 ### XML Layout কোড
 
